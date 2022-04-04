@@ -112,7 +112,7 @@ class SeatsView : View {
         titlePaint.apply {
             textSize = 50f
         }
-        canvas?.drawText(text,(width/2f) - 198f, 100f, titlePaint)
+        canvas?.drawText(text,(width/2f) - 197f, 100f, titlePaint)
 
 
     }
