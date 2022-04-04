@@ -105,6 +105,12 @@ class SeatsView : View {
             drawSeat(canvas, seat)
         }
 
+        val text = "Choose your Seat \uD83D\uDECB "
+        titlePaint.apply {
+            textSize = 50f
+        }
+        canvas?.drawText(text,(width/2f) - 198f, 100f, titlePaint)
+
 
     }
 
