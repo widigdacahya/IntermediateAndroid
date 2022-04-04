@@ -1,8 +1,7 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Widget.TheStackWidget.AppWidget.Container"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:theme="@style/Theme.TheStackWidget.AppWidgetContainer">
+    android:layout_height="match_parent">
 
 
     <LinearLayout
@@ -16,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_weight="9"
             android:loopViews="true"
-            android:layout_height="0dp"/>
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/banner_text_widgetApp"
@@ -48,4 +47,4 @@
         android:visibility="gone" />
 
 
-</RelativeLayout>
+</FrameLayout>

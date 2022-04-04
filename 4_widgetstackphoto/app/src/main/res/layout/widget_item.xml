@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        tools:srcCompat="@drawable/foto7"/>
+        tools:srcCompat="@drawable/star_wars_logo" />
 
 
 </LinearLayout>

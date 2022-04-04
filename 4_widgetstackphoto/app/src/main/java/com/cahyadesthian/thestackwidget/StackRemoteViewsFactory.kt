@@ -8,7 +8,7 @@ import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import androidx.core.os.bundleOf
 
-class StackRemoteViewsFactory(private val mContext: Context): RemoteViewsService.RemoteViewsFactory {
+internal class StackRemoteViewsFactory(private val mContext: Context): RemoteViewsService.RemoteViewsFactory {
 
     private val mWidgetItems = ArrayList<Bitmap>()
 
@@ -28,6 +28,11 @@ class StackRemoteViewsFactory(private val mContext: Context): RemoteViewsService
         mWidgetItems.add(BitmapFactory.decodeResource(mContext.resources, R.drawable.foto6))
         mWidgetItems.add(BitmapFactory.decodeResource(mContext.resources, R.drawable.foto7))
 
+//        mWidgetItems.add(BitmapFactory.decodeResource(mContext.resources, R.drawable.darth_vader))
+//        mWidgetItems.add(BitmapFactory.decodeResource(mContext.resources, R.drawable.star_wars_logo))
+//        mWidgetItems.add(BitmapFactory.decodeResource(mContext.resources, R.drawable.storm_trooper))
+//        mWidgetItems.add(BitmapFactory.decodeResource(mContext.resources, R.drawable.starwars))
+//        mWidgetItems.add(BitmapFactory.decodeResource(mContext.resources, R.drawable.falcon))
 
 
 
