@@ -2,18 +2,53 @@
     style="@style/Widget.TheWidget.AppWidget.Container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/sky_300"
+    android:padding="16dp"
     android:theme="@style/Theme.TheWidget.AppWidgetContainer">
 
-    <TextView
-        android:id="@+id/appwidget_text"
-        style="@style/Widget.TheWidget.AppWidget.InnerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <LinearLayout
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_margin="8dp"
-        android:contentDescription="@string/appwidget_text"
-        android:text="@string/appwidget_text"
-        android:textSize="24sp"
-        android:textStyle="bold|italic" />
+        android:orientation="horizontal"
+        android:weightSum="9"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_logo_cidoding"
+            android:src="@drawable/dicoding_logo"
+            android:padding="16dp"
+            android:layout_weight="3"
+            android:scaleType="fitCenter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/image_dicoding_logo" />
+
+        <TextView
+            android:id="@+id/appwidget_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="3"
+            android:contentDescription="@string/appwidget_text"
+            android:gravity="center"
+            android:text="@string/randome"
+            android:textColor="#ffffff"
+            android:textSize="15sp"
+            android:textStyle="bold|italic" />
+
+        <Button
+            android:id="@+id/btn_generate"
+            android:background="@color/light_blue_600"
+            android:layout_weight="3"
+            android:text="@string/generate"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
 </RelativeLayout>
