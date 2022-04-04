@@ -1,11 +1,14 @@
 package com.cahyadesthian.ticketinchair
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
 import android.graphics.Rect
 import android.util.AttributeSet
+import android.view.MotionEvent
+import android.view.MotionEvent.ACTION_DOWN
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
 
@@ -177,6 +180,88 @@ class SeatsView : View {
 
         //pengembalian ke pengaturan sebelumnya
         canvas?.restore()
+
+    }
+
+
+
+
+
+    /**
+     * untuk penekanan tiap kursi
+     * Jika kita menggunakan fungsi onClick pada SeatsView,
+     * respon yang didapat tidak bisa digunakan untuk memilih kursi.
+     * Sebab, onClick menyebabkan semua tampilan
+     * SeatsView secara utuh dapat ditekan.
+     * Oleh karena itu, kita akan menggunakan metode onTouchEvent.
+     * */
+
+
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+
+        val halfOfHeight = height / 2
+        val halfOfWidth = width / 2
+
+        val widthColumnOne = (halfOfWidth-300f)..(halfOfWidth-100f)
+        val widthColumnTwo = (halfOfWidth+100f)..(halfOfWidth+300f)
+
+        val heightRowOne = (halfOfHeight-600f)..(halfOfHeight-400f)
+        val heightRowTwo = (halfOfHeight-300f)..(halfOfHeight-100f)
+        val heightRowThree = (halfOfHeight+0f)..(halfOfHeight+200f)
+        val heightRowFour = (halfOfHeight+300f)..(halfOfHeight+500f)
+
+        when(event?.action) {
+
+            ACTION_DOWN -> {
+                if(event.x in widthColumnOne && event.y in heightRowOne) {
+                    booking(0)
+                } else if(event.x in widthColumnTwo && event.y in heightRowOne) {
+                    booking(1)
+                } else if(event.x in widthColumnOne && event.y in heightRowTwo) {
+                    booking(2)
+                } else if(event.x in widthColumnTwo && event.y in heightRowTwo) {
+                    booking(3)
+                } else if(event.x in widthColumnOne && event.y in heightRowThree) {
+                    booking(4)
+                } else if(event.x in widthColumnTwo && event.y in heightRowThree) {
+                    booking(5)
+                } else if(event.x in widthColumnOne && event.y in heightRowFour) {
+                    booking(6)
+                } else if(event.x in widthColumnTwo && event.y in heightRowFour) {
+                    booking(7)
+                }
+
+            }
+
+
+
+        }
+
+
+
+        return true
+    }
+
+
+    private fun booking(position: Int) {
+
+        for(seat in seats) {
+            seat.isBooked = false
+        }
+
+        seats[position].apply {
+            seat = this
+            isBooked = true
+        }
+
+        /**
+         *  fungsi invalidate untuk me-refresh metode onDraw dalam SeatsView.
+         *  Dengan begitu, posisi kursi yang dipilih (booking)
+         *  sudah disimpan dalam array seats dan SeatsView siap digunakan.
+         *
+         * */
+        invalidate()
 
     }
 
