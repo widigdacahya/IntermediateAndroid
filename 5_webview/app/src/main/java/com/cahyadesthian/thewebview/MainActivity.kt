@@ -2,6 +2,7 @@ package com.cahyadesthian.thewebview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
@@ -16,12 +17,26 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         webView.settings.javaScriptEnabled = true
 
-        webView.webViewClient = object : WebViewClient() {
-            override fun onPageFinished(view: WebView?, url: String?) {
-                Toast.makeText(this@MainActivity, "Your web already loaded \uD83C\uDF08 ", Toast.LENGTH_LONG).show()
+//        webView.webViewClient = object : WebViewClient() {
+//            override fun onPageFinished(view: WebView?, url: String?) {
+//                Toast.makeText(this@MainActivity, "Your web already loaded \uD83C\uDF08 ", Toast.LENGTH_LONG).show()
+//
+//            }
+//        }
 
+
+        //model javascript
+        webView.webViewClient = object : WebViewClient() {
+
+            override fun onPageFinished(view: WebView?, url: String?) {
+                if (view != null) {
+                    view.loadUrl("javascript:alert('web already loaded \\uD83C\\uDF08')")
+                }
             }
+
         }
+        webView.webChromeClient = WebChromeClient()
+
 
         webView.loadUrl("https://cahyadesthian.com/")
         //webView.loadUrl("https://www.dicoding.com")
