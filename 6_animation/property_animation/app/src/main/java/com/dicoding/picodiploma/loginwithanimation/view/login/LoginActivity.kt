@@ -1,9 +1,12 @@
 package com.dicoding.picodiploma.loginwithanimation.view.login
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
@@ -33,6 +36,8 @@ class LoginActivity : AppCompatActivity() {
         setupView()
         setupViewModel()
         setupAction()
+
+        animateLoginAct()
     }
 
     private fun setupView() {
@@ -93,6 +98,44 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+
+
+    /*
+    * Animation
+    * */
+    private fun animateLoginAct() {
+
+        val imageTaDa = ObjectAnimator.ofFloat(binding.imageView,View.ALPHA,1f).setDuration(3000)
+
+        val titleText = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA,1f).setDuration(500)
+        val messageText = ObjectAnimator.ofFloat(binding.messageTextView, View.ALPHA,1f).setDuration(500)
+
+        val emailText = ObjectAnimator.ofFloat(binding.emailTextView, View.ALPHA,1f).setDuration(500)
+        val emailEditText = ObjectAnimator.ofFloat(binding.emailEditTextLayout, View.ALPHA,1f).setDuration(500)
+
+        val passwordText = ObjectAnimator.ofFloat(binding.passwordTextView, View.ALPHA,1f).setDuration(500)
+        val passwordEditText = ObjectAnimator.ofFloat(binding.passwordEditTextLayout, View.ALPHA, 1f).setDuration(500)
+
+        val loginBtn = ObjectAnimator.ofFloat(binding.loginButton, View.ALPHA,1f).setDuration(500)
+
+
+        AnimatorSet().apply {
+            playSequentially(imageTaDa,titleText,messageText,emailText,emailEditText,passwordText,passwordEditText,loginBtn)
+            start()
+        }
+
+        //image berjalan-jalan bolak balik
+        ObjectAnimator.ofFloat(binding.imageView, View.TRANSLATION_X,-30f,30f).apply {
+            duration = 6000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }.start()
+
+
+
+
     }
 
 }
