@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
     <ImageView
         android:id="@+id/previewImageView"
         android:layout_width="0dp"
@@ -228,5 +230,14 @@
         app:layout_constraintStart_toEndOf="@+id/ratingTextView"
         app:layout_constraintTop_toTopOf="@+id/ratingImageView" />
 
+    <ImageView
+        android:id="@+id/settingImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_baseline_settings_24"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
