@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         setupView()
         setupViewModel()
         setupAction()
+
+        animateMainAct()
     }
 
     private fun setupView() {
@@ -67,4 +69,12 @@ class MainActivity : AppCompatActivity() {
             mainViewModel.logout()
         }
     }
+
+    private fun animateMainAct() {
+
+    }
+
+
+
+
 }
