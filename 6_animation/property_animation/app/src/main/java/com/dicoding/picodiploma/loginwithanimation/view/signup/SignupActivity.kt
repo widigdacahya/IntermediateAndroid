@@ -1,8 +1,11 @@
 package com.dicoding.picodiploma.loginwithanimation.view.signup
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
@@ -30,6 +33,9 @@ class SignupActivity : AppCompatActivity() {
         setupView()
         setupViewModel()
         setupAction()
+
+        animateSignUp()
+
     }
 
     private fun setupView() {
@@ -82,4 +88,42 @@ class SignupActivity : AppCompatActivity() {
             }
         }
     }
+
+
+    /*
+    * for animating some element in this activity :D
+    * */
+    private fun animateSignUp() {
+
+        //imageview mondar mandir
+        ObjectAnimator.ofFloat(binding.imageView, View.TRANSLATION_X, -30f,30f).apply {
+            duration = 6000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }.start()
+
+        val textTitle = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1f).setDuration(500)
+
+        val textName = ObjectAnimator.ofFloat(binding.nameTextView, View.ALPHA,1f).setDuration(500)
+        val editTextName = ObjectAnimator.ofFloat(binding.nameEditTextLayout, View.ALPHA,1f).setDuration(500)
+
+        val textEmail = ObjectAnimator.ofFloat(binding.emailTextView, View.ALPHA,1f).setDuration(500)
+        val editTextEmail = ObjectAnimator.ofFloat(binding.emailEditTextLayout, View.ALPHA,1f).setDuration(500)
+
+        val textPassword = ObjectAnimator.ofFloat(binding.passwordTextView, View.ALPHA,1f).setDuration(500)
+        val editTextPassword = ObjectAnimator.ofFloat(binding.passwordEditTextLayout, View.ALPHA,1f).setDuration(500)
+
+        val signUpBtn = ObjectAnimator.ofFloat(binding.signupButton, View.ALPHA,1f).setDuration(500)
+
+
+        AnimatorSet().apply {
+            playSequentially(textTitle,textName,editTextName,textEmail,editTextEmail, textPassword,editTextPassword,signUpBtn)
+            startDelay = 500
+
+        }.start()
+
+
+    }
+
+
 }
