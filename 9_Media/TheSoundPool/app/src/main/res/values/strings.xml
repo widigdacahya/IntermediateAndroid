@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TheSoundPool</string>
+    <string name="sound_pool_test">🎼 Sound Pool Test 🎼</string>
+    <string name="play_sound">Play Sound ▶️</string>
 </resources>
