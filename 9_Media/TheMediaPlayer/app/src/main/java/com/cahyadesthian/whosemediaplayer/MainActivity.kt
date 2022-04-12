@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 if(mMediaPlayer?.isPlaying as Boolean) {
                     mMediaPlayer?.pause()
+                    //jadi kalau usdha play terus di klik play lagi jadi pause
                 }else {
                     mMediaPlayer?.start()
                 }
