@@ -17,9 +17,31 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        mainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mainBinding.root)
 
         init()
+
+        mainBinding.btnPlayMainUI.setOnClickListener {
+            if(!isReady) {
+                mMediaPlayer?.prepareAsync()
+            } else {
+                if(mMediaPlayer?.isPlaying as Boolean) {
+                    mMediaPlayer?.pause()
+                }else {
+                    mMediaPlayer?.start()
+                }
+            }
+        }
+
+        mainBinding.btnStopMainUI.setOnClickListener {
+            if(mMediaPlayer?.isPlaying as Boolean || isReady) {
+                mMediaPlayer?.stop()
+                isReady = false
+            }
+        }
+
+
     }
 
     private fun init() {
