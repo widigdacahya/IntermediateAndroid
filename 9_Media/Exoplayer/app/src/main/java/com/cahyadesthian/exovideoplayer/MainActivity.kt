@@ -5,8 +5,11 @@ import android.os.Bundle
 import com.cahyadesthian.exovideoplayer.databinding.ActivityMainBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.util.Util
 
 class MainActivity : AppCompatActivity() {
+
+    private var player : ExoPlayer? = null
 
 
     private val viewBinding by lazy(LazyThreadSafetyMode.NONE) {
@@ -21,19 +24,73 @@ class MainActivity : AppCompatActivity() {
         val player = ExoPlayer.Builder(this).build()
         viewBinding.exoplateVidplaterMainUI.player = player
 
-        val mediaItem = MediaItem.fromUri(URL_VIDEO_DICODING)
+        //moved to other fun to avoid bug when run in background
+        //val mediaItem = MediaItem.fromUri(URL_VIDEO_DICODING)
         //val mediaItem = MediaItem.fromUri(URL_VIDEO_YOUTUBE)
 
-        val anotherMediaItem = MediaItem.fromUri(URL_AUDIO)
+        //val anotherMediaItem = MediaItem.fromUri(URL_AUDIO)
 
-        player.setMediaItem(mediaItem)
+        //player.setMediaItem(mediaItem)
 
-        player.addMediaItem(anotherMediaItem)
+        //player.addMediaItem(anotherMediaItem)
 
-        player.prepare()
+        //player.prepare()
 
 
     }
+
+
+    private fun initializePlayer() {
+        val mediaItem = MediaItem.fromUri(URL_VIDEO_DICODING)
+        val anotherMediaItem = MediaItem.fromUri(URL_AUDIO)
+
+        player = ExoPlayer.Builder(this).build().also { exoPlayer ->
+            viewBinding.exoplateVidplaterMainUI.player = exoPlayer
+            exoPlayer.setMediaItem(mediaItem)
+            exoPlayer.addMediaItem(anotherMediaItem)
+            exoPlayer.prepare()
+        }
+
+    }
+
+    private fun releasePlayer() {
+        player?.release()
+        player = null
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        if(Util.SDK_INT >= 24) {
+            initializePlayer()
+        }
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(Util.SDK_INT < 24 && player == null) {
+            initializePlayer()
+        }
+    }
+
+
+    override fun onPause() {
+        super.onPause()
+        if(Util.SDK_INT <= 24) {
+            releasePlayer()
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if(Util.SDK_INT >= 24) {
+            releasePlayer()
+        }
+    }
+
+
 
 
 
