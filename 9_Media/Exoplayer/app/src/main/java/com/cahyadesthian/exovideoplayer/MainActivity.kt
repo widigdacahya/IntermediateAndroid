@@ -2,6 +2,9 @@ package com.cahyadesthian.exovideoplayer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.cahyadesthian.exovideoplayer.databinding.ActivityMainBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
@@ -70,6 +73,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        hideSystemUI()
         if(Util.SDK_INT < 24 && player == null) {
             initializePlayer()
         }
@@ -91,6 +95,16 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    /*
+    * Full screen
+    * */
+    private fun hideSystemUI() {
+        WindowCompat.setDecorFitsSystemWindows(window,false)
+        WindowInsetsControllerCompat(window, viewBinding.exoplateVidplaterMainUI).let { controller ->
+            controller.hide(WindowInsetsCompat.Type.systemBars())
+            controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
+    }
 
 
 
