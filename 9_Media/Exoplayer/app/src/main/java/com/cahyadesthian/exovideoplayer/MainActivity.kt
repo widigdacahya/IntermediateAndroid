@@ -21,9 +21,15 @@ class MainActivity : AppCompatActivity() {
         val player = ExoPlayer.Builder(this).build()
         viewBinding.exoplateVidplaterMainUI.player = player
 
-        //val mediaItem = MediaItem.fromUri(URL_VIDEO_DICODING)
-        val mediaItem = MediaItem.fromUri(URL_VIDEO_YOUTUBE)
+        val mediaItem = MediaItem.fromUri(URL_VIDEO_DICODING)
+        //val mediaItem = MediaItem.fromUri(URL_VIDEO_YOUTUBE)
+
+        val anotherMediaItem = MediaItem.fromUri(URL_AUDIO)
+
         player.setMediaItem(mediaItem)
+
+        player.addMediaItem(anotherMediaItem)
+
         player.prepare()
 
 
@@ -34,5 +40,8 @@ class MainActivity : AppCompatActivity() {
     companion object {
         const val URL_VIDEO_DICODING = "https://github.com/dicodingacademy/assets/releases/download/release-video/VideoDicoding.mp4"
         const val URL_VIDEO_YOUTUBE = "https://www.youtube.com/watch?v=iGKWjxgzSSM"
+
+        const val URL_AUDIO = "https://github.com/dicodingacademy/assets/raw/main/android_intermediate_academy/bensound_ukulele.mp3"
+
     }
 }
