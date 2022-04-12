@@ -9,6 +9,10 @@
 
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/exoplate_vidplater_mainUI"
+        app:default_artwork="@drawable/music"
+        app:use_artwork="true"
+        app:resize_mode="fixed_width"
+        app:show_buffering="when_playing"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
