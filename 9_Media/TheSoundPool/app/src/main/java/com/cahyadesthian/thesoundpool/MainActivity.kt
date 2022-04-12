@@ -4,8 +4,11 @@ import android.media.SoundPool
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.cahyadesthian.thesoundpool.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var mainBinding : ActivityMainBinding
 
     private lateinit var sp : SoundPool
     private var soundId : Int = 0
@@ -14,7 +17,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        mainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mainBinding.root)
 
         sp = SoundPool.Builder()
             .setMaxStreams(10)
@@ -28,6 +32,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         soundId = sp.load(this, R.raw.bird_gaje, 1)
+
+
+        mainBinding.btnPlaySoundpoolMainUI.setOnClickListener {
+            if(spLoaded) sp.play(soundId,1f,1f,0,5,1f)
+        }
+
 
     }
 }
