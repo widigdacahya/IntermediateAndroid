@@ -38,6 +38,18 @@ class MainActivity : AppCompatActivity() {
             if(spLoaded) sp.play(soundId,1f,1f,0,5,1f)
         }
 
+        /**
+         * Parameter play
+         * int play (
+                int soundID,
+                float leftVolume,
+                float rightVolume,
+                int priority,
+                int loop,
+                float rate
+                )
+         * */
+
 
     }
 }
