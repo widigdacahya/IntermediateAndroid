@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
+import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
@@ -21,6 +22,9 @@ import com.dicoding.picodiploma.mycamera.databinding.ActivityCameraBinding
 
 class CameraActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCameraBinding
+
+    private var imageCapture: ImageCapture? = null
+    private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,12 +49,34 @@ class CameraActivity : AppCompatActivity() {
 
     private fun takePhoto() {
        // takePhoto
+
+        var imageCaptured = imageCapture ?: return
+
+        val photoFile = createFile(application)
+
+        val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
+            imageCaptured.takePicture(
+                outputOptions,ContextCompat.getMainExecutor(this),
+                object : ImageCapture.OnImageSavedCallback{
+
+                    override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                        Toast.makeText(this@CameraActivity, "Image Captured \uD83D\uDE46\uD83C\uDFFB\u200D♀️", Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onError(exception: ImageCaptureException) {
+                       Toast.makeText(this@CameraActivity, "Capture Failed \uD83D\uDE47\uD83C\uDFFB\u200D♀️", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            )
+
+
     }
 
 
 
-    private var imageCapture: ImageCapture? = null
-    private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+//    private var imageCapture: ImageCapture? = null
+//    private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
     private fun startCamera() {
         // showCamera
