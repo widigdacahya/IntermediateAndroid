@@ -1,5 +1,6 @@
 package com.dicoding.picodiploma.mycamera
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowInsets
@@ -61,6 +62,16 @@ class CameraActivity : AppCompatActivity() {
 
                     override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                         Toast.makeText(this@CameraActivity, "Image Captured \uD83D\uDE46\uD83C\uDFFB\u200D♀️", Toast.LENGTH_SHORT).show()
+
+                        val intentCapturedImage = Intent()
+                        intentCapturedImage.putExtra("picture",photoFile)
+                        intentCapturedImage.putExtra(
+                            "isBackCamera",
+                            cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA
+                        )
+                        setResult(MainActivity.CAMERA_X_RESULT,intentCapturedImage)
+                        finish()
+
                     }
 
                     override fun onError(exception: ImageCaptureException) {
