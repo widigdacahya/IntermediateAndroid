@@ -3,12 +3,16 @@ package com.dicoding.picodiploma.mycamera
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.dicoding.picodiploma.mycamera.databinding.ActivityMainBinding
+import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,9 +40,28 @@ class MainActivity : AppCompatActivity() {
     private fun startCameraX() {
         Toast.makeText(this, "\uD83D\uDCF8 Camera Openend", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, CameraActivity::class.java)
-        //launcherIntentCameraX.launch(intent)
+        //launcherIntentCameraX.launch(intent) //in the previous it was confusing wth is these thing, but ternyata ini val that it selfmade that made after few steps we confused(in that time we use startActivity)
         startActivity(intent)
     }
+
+
+    private val launcerIntentCameraX = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+
+        if(it.resultCode == CAMERA_X_RESULT) {
+
+            val myFile = it.data?.getSerializableExtra("picture") as File
+            val isBackCamera = it.data?.getBooleanExtra("isBackCamera", true) as Boolean
+
+            val result = BitmapFactory.decodeFile(myFile.path)
+
+            binding.previewImageView.setImageBitmap(result)
+
+        }
+
+    }
+
 
     private fun uploadImage() {
         Toast.makeText(this, "Fitur ini belum tersedia", Toast.LENGTH_SHORT).show()
