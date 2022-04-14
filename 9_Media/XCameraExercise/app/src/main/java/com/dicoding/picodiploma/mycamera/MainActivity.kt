@@ -40,12 +40,12 @@ class MainActivity : AppCompatActivity() {
     private fun startCameraX() {
         Toast.makeText(this, "\uD83D\uDCF8 Camera Openend", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, CameraActivity::class.java)
-        //launcherIntentCameraX.launch(intent) //in the previous it was confusing wth is these thing, but ternyata ini val that it selfmade that made after few steps we confused(in that time we use startActivity)
-        startActivity(intent)
+        launcherIntentCameraX.launch(intent) //in the previous it was confusing wth is these thing, but ternyata ini val that it selfmade that made after few steps we confused(in that time we use startActivity)
+        //startActivity(intent)
     }
 
 
-    private val launcerIntentCameraX = registerForActivityResult(
+    private val launcherIntentCameraX = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
 
