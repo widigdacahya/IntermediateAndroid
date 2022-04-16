@@ -28,4 +28,13 @@ class Repository {
     }
 
 
+    suspend fun pushPost(post: Post): Response<Post> {
+        return RetroiftInstance.api.pushPost( post)
+    }
+
+    suspend fun pushPost2(userId: Int,id:Int,title:String,body:String): Response<Post> {
+        return RetroiftInstance.api.pushPost2(userId, id, title, body)
+    }
+
+
 }

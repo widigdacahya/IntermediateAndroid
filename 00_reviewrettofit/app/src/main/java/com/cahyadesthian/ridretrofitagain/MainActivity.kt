@@ -31,10 +31,27 @@ class MainActivity : AppCompatActivity() {
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
-        viewModel.getCustomPostSomeQueries(2,"id","desc")
-        viewModel.customPostWithSomeQueries.observe(this, Observer {
+        //viewModel.getCustomPostSomeQueries(2,"id","desc")
+
+        //for post
+//        val myPost = Post(2,2,"Caty","wiwiwi")
+//        viewModel.pushPost(myPost)
+
+
+
+        //post urlform
+        viewModel.pushPost2(2,5,"Hi","Come On you are awesome!")
+
+
+        viewModel.myResponse.observe(this, Observer {
            if(it.isSuccessful) {
-               theAdapter.setData(it.body() as ArrayList<Post>)
+               //theAdapter.setData(it.body() as ArrayList<Post>)
+
+               Log.d("Main", it.body().toString())
+               Log.d("Main", it.code().toString())
+               Log.d("Main", it.message())
+
+
            } else {
                Toast.makeText(this,it.code(), Toast.LENGTH_SHORT).show()
            }
