@@ -148,7 +148,9 @@ class MainActivity : AppCompatActivity() {
 
         if(getFile!=null) {
 
-            val file = getFile as File
+            //val file = getFile as File
+            val file = reduceFileImage(getFile as File)
+
 
             val description = "This desc of image".toRequestBody("text/plain".toMediaType())
             val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
@@ -243,6 +245,7 @@ class MainActivity : AppCompatActivity() {
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext,it) == PackageManager.PERMISSION_GRANTED
     }
+
 
 
 
