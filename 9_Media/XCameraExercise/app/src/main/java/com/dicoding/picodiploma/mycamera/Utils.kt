@@ -16,11 +16,13 @@ val timeStamp: String = SimpleDateFormat(
     Locale.US
 ).format(System.currentTimeMillis())
 
+//untuk intentCamera things
 fun createTempFile(context: Context): File {
     val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
     return File.createTempFile(timeStamp, ".jpg", storageDir)
 }
 
+//untuk cameraX
 fun createFile(application: Application): File {
     val mediaDir = application.externalMediaDirs.firstOrNull()?.let {
         File(it, application.resources.getString(R.string.app_name)).apply { mkdirs() }
