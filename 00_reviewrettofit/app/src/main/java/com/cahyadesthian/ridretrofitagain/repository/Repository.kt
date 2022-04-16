@@ -22,4 +22,10 @@ class Repository {
         return RetroiftInstance.api.getPostSomeQuery(userId,sort, order)
     }
 
+
+    suspend fun getCustomPost2(userId: Int, options: Map<String, String>): Response<List<Post>> {
+        return RetroiftInstance.api.getSomeQueryAnotherWay(userId, options)
+    }
+
+
 }

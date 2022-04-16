@@ -39,9 +39,16 @@ class MainActivity : AppCompatActivity() {
             //viewModel.getCustomPosts(theNumber.toInt())
 
             //untuk customPost dengna beberapa query
-            viewModel.getCustomPostSomeQueries(theNumber.toInt(),"id","desc")
+            //viewModel.getCustomPostSomeQueries(theNumber.toInt(),"id","desc")
 
-            viewModel.customPostWithSomeQueries.observe(this, Observer { response ->
+            //untuk yang querymap
+            val options: HashMap<String,String> = HashMap()
+            options["_sort"] = "id"
+            options["_order"] = "desc"
+            viewModel.getCustomPostAnotherWay(theNumber.toInt(), options)
+
+
+            viewModel.customPostAnotherWay.observe(this, Observer { response ->
 
                 if(response.isSuccessful) {
                     //Log.d("Response ", response.body()?.userId.toString())
