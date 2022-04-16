@@ -1,4 +1,4 @@
-package com.cahyadesthian.chystoryapp
+package com.dicoding.picodiploma.loginwithanimation
 
 import org.junit.Test
 
