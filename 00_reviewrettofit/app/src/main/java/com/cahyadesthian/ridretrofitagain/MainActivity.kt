@@ -3,15 +3,21 @@ package com.cahyadesthian.ridretrofitagain
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.cahyadesthian.ridretrofitagain.adapter.MyAdapter
 import com.cahyadesthian.ridretrofitagain.databinding.ActivityMainBinding
+import com.cahyadesthian.ridretrofitagain.model.Post
 import com.cahyadesthian.ridretrofitagain.repository.Repository
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var mainBinding: ActivityMainBinding
+    private val theAdapter by lazy { MyAdapter() }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,64 +25,29 @@ class MainActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_main)
         setContentView(mainBinding.root)
 
+        setupRecylerView()
 
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
-        viewModel = ViewModelProvider(this,viewModelFactory).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
-        //viewModel.getPost()
+        viewModel.getCustomPostSomeQueries(2,"id","desc")
+        viewModel.customPostWithSomeQueries.observe(this, Observer {
+           if(it.isSuccessful) {
+               theAdapter.setData(it.body() as ArrayList<Post>)
+           } else {
+               Toast.makeText(this,it.code(), Toast.LENGTH_SHORT).show()
+           }
+        })
 
-
-
-
-        mainBinding.btnGetMainUI.setOnClickListener {
-            val theNumber = mainBinding.edtNumberMainUI.text.toString()
-
-            //viewModel.getPost2(theNumber.toInt())
-            //viewModel.getPost2(Integer.parseInt(theNumber))
-
-            //untuk customPost
-            //viewModel.getCustomPosts(theNumber.toInt())
-
-            //untuk customPost dengna beberapa query
-            //viewModel.getCustomPostSomeQueries(theNumber.toInt(),"id","desc")
-
-            //untuk yang querymap
-            val options: HashMap<String,String> = HashMap()
-            options["_sort"] = "id"
-            options["_order"] = "desc"
-            viewModel.getCustomPostAnotherWay(theNumber.toInt(), options)
-
-
-            viewModel.customPostAnotherWay.observe(this, Observer { response ->
-
-                if(response.isSuccessful) {
-                    //Log.d("Response ", response.body()?.userId.toString())
-                    //Log.d("Response ", response.body()?.id.toString())
-                    //Log.d("Response ", response.title.toString())
-                    mainBinding.textViewMainUI.text = response.body()?.toString()
-                    //Log.d("Response ", response.body()?.body.toString())
-
-                    response.body()?.forEach {
-                        Log.d("Response UserId ", it.userId.toString())
-                        Log.d("Response PostId", it.id.toString())
-                        Log.d("Response Title", it.title)
-                        Log.d("Response Desc", it.body)
-                        Log.d("Response Separation", "-----------\n")
-
-
-                    }
-
-
-                } else {
-                    Log.d("ResponseFail", response.errorBody().toString())
-                    mainBinding.textViewMainUI.text = response.code().toString()
-                }
-
-            })
-
-
-        }
 
     }
+
+    private fun setupRecylerView() {
+        mainBinding.apply {
+            rvResponseMainUI.adapter = theAdapter
+            rvResponseMainUI.layoutManager = LinearLayoutManager(this@MainActivity)
+        }
+    }
+
 }
