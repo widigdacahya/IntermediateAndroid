@@ -10,4 +10,8 @@ class Repository {
         return RetroiftInstance.api.getPost()
     }
 
+    suspend fun getPost2(number: Int): Response<Post> {
+        return RetroiftInstance.api.getPost2(number)
+    }
+
 }

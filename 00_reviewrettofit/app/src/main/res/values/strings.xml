@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RidRetrofitAgain</string>
+    <string name="number">Number</string>
+    <string name="get_info">Get Info</string>
 </resources>

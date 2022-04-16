@@ -24,25 +24,34 @@ class MainActivity : AppCompatActivity() {
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this,viewModelFactory).get(MainViewModel::class.java)
 
-        viewModel.getPost()
-        viewModel.myResponse.observe(this, Observer { response ->
-//            Log.d("Response ", response.userId.toString())
-//            Log.d("Response ", response.id.toString())
-//            Log.d("Response ", response.title.toString())
-//            Log.d("Response ", response.body.toString())
+        //viewModel.getPost()
 
-            if(response.isSuccessful) {
-                Log.d("Response ", response.body()?.userId.toString())
-                Log.d("Response ", response.body()?.id.toString())
-                //Log.d("Response ", response.title.toString())
-                mainBinding.textViewMainUI.text = response.body()?.title.toString()
-                Log.d("Response ", response.body()?.body.toString())
-            } else {
-                Log.d("ResponseFail", response.errorBody().toString())
-                mainBinding.textViewMainUI.text = response.code().toString()
-            }
 
-        })
+
+
+        mainBinding.btnGetMainUI.setOnClickListener {
+            val theNumber = mainBinding.edtNumberMainUI.text.toString()
+
+            viewModel.getPost2(theNumber.toInt())
+            //viewModel.getPost2(Integer.parseInt(theNumber))
+
+            viewModel.myResponse2.observe(this, Observer { response ->
+
+                if(response.isSuccessful) {
+                    //Log.d("Response ", response.body()?.userId.toString())
+                    //Log.d("Response ", response.body()?.id.toString())
+                    //Log.d("Response ", response.title.toString())
+                    mainBinding.textViewMainUI.text = response.body()?.toString()
+                    //Log.d("Response ", response.body()?.body.toString())
+                } else {
+                    Log.d("ResponseFail", response.errorBody().toString())
+                    mainBinding.textViewMainUI.text = response.code().toString()
+                }
+
+            })
+
+
+        }
 
     }
 }
