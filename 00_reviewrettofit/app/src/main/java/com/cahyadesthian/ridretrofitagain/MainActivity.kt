@@ -40,7 +40,10 @@ class MainActivity : AppCompatActivity() {
 
 
         //post urlform
-        viewModel.pushPost2(2,5,"Hi","Come On you are awesome!")
+        //viewModel.pushPost2(2,5,"Hi","Come On you are awesome!")
+
+        //tryin custom headir interceptor
+        viewModel.getPost()
 
 
         viewModel.myResponse.observe(this, Observer {
@@ -50,6 +53,7 @@ class MainActivity : AppCompatActivity() {
                Log.d("Main", it.body().toString())
                Log.d("Main", it.code().toString())
                Log.d("Main", it.message())
+               Log.d("Main", it.headers().toString())
 
 
            } else {
