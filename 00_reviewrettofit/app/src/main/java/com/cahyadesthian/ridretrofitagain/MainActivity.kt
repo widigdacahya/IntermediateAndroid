@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         //viewModel.pushPost2(2,5,"Hi","Come On you are awesome!")
 
         //tryin custom headir interceptor
-        viewModel.getPost()
+        viewModel.getPost("93579879")
 
 
         viewModel.myResponse.observe(this, Observer {
