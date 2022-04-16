@@ -32,5 +32,11 @@ interface SimpleApi {
         @Query("userId") userId: Int
     ): Response<List<Post>>
 
+    @GET("posts")
+    suspend fun getPostSomeQuery(
+        @Query("userId") userId: Int,
+        @Query("_sort") sort: String,
+        @Query("_order") order: String
+    ): Response<List<Post>>
 
 }

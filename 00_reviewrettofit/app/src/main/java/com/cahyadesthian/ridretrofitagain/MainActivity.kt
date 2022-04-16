@@ -36,9 +36,12 @@ class MainActivity : AppCompatActivity() {
             //viewModel.getPost2(Integer.parseInt(theNumber))
 
             //untuk customPost
-            viewModel.getCustomPosts(theNumber.toInt())
+            //viewModel.getCustomPosts(theNumber.toInt())
 
-            viewModel.myCustomPosts.observe(this, Observer { response ->
+            //untuk customPost dengna beberapa query
+            viewModel.getCustomPostSomeQueries(theNumber.toInt(),"id","desc")
+
+            viewModel.customPostWithSomeQueries.observe(this, Observer { response ->
 
                 if(response.isSuccessful) {
                     //Log.d("Response ", response.body()?.userId.toString())

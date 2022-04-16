@@ -13,6 +13,8 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     val myResponse: MutableLiveData<Response<Post>> = MutableLiveData()
     val myResponse2: MutableLiveData<Response<Post>> = MutableLiveData()
     val myCustomPosts: MutableLiveData<Response<List<Post>>> = MutableLiveData()
+    val customPostWithSomeQueries : MutableLiveData<Response<List<Post>>> = MutableLiveData()
+
 
     fun getPost() {
         viewModelScope.launch {
@@ -37,5 +39,12 @@ class MainViewModel(private val repository: Repository): ViewModel() {
         }
     }
 
+
+    fun getCustomPostSomeQueries(userId: Int, sort: String, order: String) {
+        viewModelScope.launch {
+            val response = repository.getCustomPostSomeQueries(userId, sort, order)
+            customPostWithSomeQueries.value = response
+        }
+    }
 
 }
