@@ -32,10 +32,13 @@ class MainActivity : AppCompatActivity() {
         mainBinding.btnGetMainUI.setOnClickListener {
             val theNumber = mainBinding.edtNumberMainUI.text.toString()
 
-            viewModel.getPost2(theNumber.toInt())
+            //viewModel.getPost2(theNumber.toInt())
             //viewModel.getPost2(Integer.parseInt(theNumber))
 
-            viewModel.myResponse2.observe(this, Observer { response ->
+            //untuk customPost
+            viewModel.getCustomPosts(theNumber.toInt())
+
+            viewModel.myCustomPosts.observe(this, Observer { response ->
 
                 if(response.isSuccessful) {
                     //Log.d("Response ", response.body()?.userId.toString())
@@ -43,6 +46,18 @@ class MainActivity : AppCompatActivity() {
                     //Log.d("Response ", response.title.toString())
                     mainBinding.textViewMainUI.text = response.body()?.toString()
                     //Log.d("Response ", response.body()?.body.toString())
+
+                    response.body()?.forEach {
+                        Log.d("Response UserId ", it.userId.toString())
+                        Log.d("Response PostId", it.id.toString())
+                        Log.d("Response Title", it.title)
+                        Log.d("Response Desc", it.body)
+                        Log.d("Response Separation", "-----------\n")
+
+
+                    }
+
+
                 } else {
                     Log.d("ResponseFail", response.errorBody().toString())
                     mainBinding.textViewMainUI.text = response.code().toString()
