@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.cahyadesthian.ridnav.databinding.FragmentSecondBinding
 
 class SecondFragment : Fragment() {
+
+    val args : SecondFragmentArgs by navArgs()
 
     private var _secondFragmentBinding :FragmentSecondBinding? = null
     private val seconFragBinding get() = _secondFragmentBinding!!
@@ -22,6 +25,9 @@ class SecondFragment : Fragment() {
 
         _secondFragmentBinding = FragmentSecondBinding.inflate(inflater,container,false)
         val view = seconFragBinding.root
+
+        val numberPassedFromPreviousFragment = args.numberPassed
+        seconFragBinding.tvSecondfrag.text = numberPassedFromPreviousFragment.toString()
 
         seconFragBinding.tvSecondfrag.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_secondFragment_to_blankFragment)
