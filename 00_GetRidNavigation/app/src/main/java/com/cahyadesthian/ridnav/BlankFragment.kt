@@ -24,7 +24,9 @@ class BlankFragment : Fragment() {
         val view = blanFragBinding.root
 
         blanFragBinding.tvTextfirstfrag.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_blankFragment_to_secondFragment)
+
+            val action = BlankFragmentDirections.actionBlankFragmentToSecondFragment(99999)
+            Navigation.findNavController(view).navigate(action)
         }
 
         return view
