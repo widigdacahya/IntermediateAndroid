@@ -1,7 +1,10 @@
 package com.cahyadesthian.ridnav
 
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -21,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var listener : NavController.OnDestinationChangedListener
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -33,12 +37,33 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
         setupActionBarWithNavController(navController,appBarConfiguration)
 
+        //we also could use listener to do things
+        listener = NavController.OnDestinationChangedListener { controller, destination, arguments ->
+
+            if(destination.id == R.id.blankFragment) {
+                supportActionBar?.setBackgroundDrawable(ColorDrawable(getColor(R.color.orange_500)))
+            } else if(destination.id == R.id.secondFragment) {
+                supportActionBar?.setBackgroundDrawable(ColorDrawable(getColor(R.color.sky_400)))
+            }
+
+        }
+
     }
 
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.fragmentContainerView)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        navController.addOnDestinationChangedListener(listener)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        navController.removeOnDestinationChangedListener(listener)
     }
 
 }
