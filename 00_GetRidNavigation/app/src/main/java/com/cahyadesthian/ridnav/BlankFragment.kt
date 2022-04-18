@@ -25,7 +25,11 @@ class BlankFragment : Fragment() {
 
         blanFragBinding.tvTextfirstfrag.setOnClickListener {
 
-            val action = BlankFragmentDirections.actionBlankFragmentToSecondFragment(99999)
+
+            //val action = BlankFragmentDirections.actionBlankFragmentToSecondFragment(99999)
+            //we can use default number by let it empty
+
+            val action = BlankFragmentDirections.actionBlankFragmentToSecondFragment()
             Navigation.findNavController(view).navigate(action)
         }
 
