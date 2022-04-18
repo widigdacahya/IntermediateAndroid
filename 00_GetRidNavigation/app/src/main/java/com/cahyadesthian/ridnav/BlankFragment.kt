@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.cahyadesthian.ridnav.databinding.FragmentBlankBinding
 
 
@@ -21,6 +22,11 @@ class BlankFragment : Fragment() {
         //val view = inflater.inflate(R.layout.fragment_blank, container, false)
         _blankFragBinding = FragmentBlankBinding.inflate(inflater,container,false)
         val view = blanFragBinding.root
+
+        blanFragBinding.tvTextfirstfrag.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_blankFragment_to_secondFragment)
+        }
+
         return view
     }
 
