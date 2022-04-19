@@ -1,5 +1,6 @@
 package com.cahyadesthian.onboarding.onboardingpage.screens
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -27,6 +28,7 @@ class ThirdScreen : Fragment() {
 
         thirdScreenFragBinding.tvThirdFinish.setOnClickListener {
             findNavController().navigate(R.id.action_viewPagerFragment_to_homeFragment)
+            onBoardingFinished()
         }
 
 
@@ -34,7 +36,12 @@ class ThirdScreen : Fragment() {
 
     }
 
-
+    private fun onBoardingFinished() {
+        val sharefPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
+        val editor = sharefPref.edit()
+        editor.putBoolean("Finished",true)
+        editor.apply()
+    }
 
 
     override fun onDestroyView() {

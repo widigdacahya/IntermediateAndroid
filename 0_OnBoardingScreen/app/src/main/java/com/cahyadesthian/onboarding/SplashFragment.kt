@@ -1,5 +1,6 @@
 package com.cahyadesthian.onboarding
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -26,8 +27,15 @@ class SplashFragment : Fragment() {
 
 
         Handler().postDelayed({
-            findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
+            if(onBoardingFinished()) {
+                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+            } else {
+                findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
+            }
+
+
         },1000)
+
 
 
 
@@ -35,11 +43,20 @@ class SplashFragment : Fragment() {
 
     }
 
+    //check shared pref(user done on boarding)
+    private fun onBoardingFinished() : Boolean {
+        val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
+        return sharedPref.getBoolean("Finished",false)
+    }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _splashFragBinding = null
     }
+
+
 
 
 }
