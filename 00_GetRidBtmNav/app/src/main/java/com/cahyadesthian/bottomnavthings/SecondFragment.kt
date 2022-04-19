@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.cahyadesthian.bottomnavthings.databinding.FragmentSecondBinding
 
+
 class SecondFragment : Fragment() {
 
     private var _secondFragmentBinding : FragmentSecondBinding? = null
-    private val secondFragmentBinding = _secondFragmentBinding!!
+    private val secondFragmentBinding get() = _secondFragmentBinding!!
 
 
     override fun onCreateView(
