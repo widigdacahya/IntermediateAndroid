@@ -2,4 +2,8 @@
     <string name="app_name">OnBoarding</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="quote_first">Jangan pernah karena ketidaktahuan dan kebodohan kita, kita merendahkan siapapun di muka bumi ini. Karena setiap makhluk Allah, hidup maupun tidak hidup, memiliki kelebihannya masing-masing.</string>
+    <string name="next">Next</string>
+    <string name="quote_second">Segala keburukan yang kamu temukan, adalah kesempatan yang diberikan Allah padamu supaya kamu selalu berbuat baik.</string>
+    <string name="quote_third">Jangan menunggu besok-besok atur hidupmu untuk bahagia. Allah menciptakan manusia sebagai khalifah bukan untuk kalah dengan kesedihan dan kegalauan.</string>
 </resources>

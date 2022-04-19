@@ -25,7 +25,7 @@ class ViewPagerFragment : Fragment() {
         val view = viewPagerFragBinding.root
 
         val fragmentList = arrayListOf<Fragment>(
-            
+
         )
 
 
