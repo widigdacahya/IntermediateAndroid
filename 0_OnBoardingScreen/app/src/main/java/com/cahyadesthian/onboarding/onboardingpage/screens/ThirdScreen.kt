@@ -24,6 +24,11 @@ class ThirdScreen : Fragment() {
         _thirdScreenFragBinding = FragmentThirdScreenBinding.inflate(inflater,container,false)
         val view = thirdScreenFragBinding.root
 
+        thirdScreenFragBinding.tvThirdFinish.setOnClickListener {
+
+        }
+
+
         return view
 
     }
