@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.cahyadesthian.onboarding.R
 import com.cahyadesthian.onboarding.databinding.FragmentThirdScreenBinding
 
@@ -25,13 +26,15 @@ class ThirdScreen : Fragment() {
         val view = thirdScreenFragBinding.root
 
         thirdScreenFragBinding.tvThirdFinish.setOnClickListener {
-
+            findNavController().navigate(R.id.action_viewPagerFragment_to_homeFragment)
         }
 
 
         return view
 
     }
+
+
 
 
     override fun onDestroyView() {
