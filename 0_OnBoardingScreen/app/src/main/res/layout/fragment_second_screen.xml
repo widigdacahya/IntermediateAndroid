@@ -15,8 +15,10 @@
         app:cardCornerRadius="16dp"
         android:elevation="8dp"
         android:layout_marginBottom="48dp"
-        android:layout_width="360dp"
-        android:layout_height="560dp">
+        android:layout_marginEnd="48dp"
+        android:layout_marginStart="48dp"
+        android:layout_width="300dp"
+        android:layout_height="480dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -30,7 +32,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"/>
+                android:layout_height="320dp"/>
 
             <TextView
                 android:id="@+id/tv_quote"
