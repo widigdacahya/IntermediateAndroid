@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager2.widget.ViewPager2
 import com.cahyadesthian.onboarding.R
 import com.cahyadesthian.onboarding.databinding.FragmentSecondScreenBinding
 
@@ -22,6 +23,12 @@ class SecondScreen : Fragment() {
 
         _secondScreenFragBinding = FragmentSecondScreenBinding.inflate(inflater,container,false)
         val view = secondScreenFragBinding.root
+
+        val viewPager2 = activity?.findViewById<ViewPager2>(R.id.viewpager)
+
+        secondScreenFragBinding.tvSecondNext.setOnClickListener {
+            viewPager2?.currentItem = 2
+        }
 
         return view
 
