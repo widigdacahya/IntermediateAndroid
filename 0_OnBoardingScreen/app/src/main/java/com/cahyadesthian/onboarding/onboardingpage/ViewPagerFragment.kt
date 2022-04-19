@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.cahyadesthian.onboarding.R
 import com.cahyadesthian.onboarding.databinding.FragmentViewPagerBinding
+import com.cahyadesthian.onboarding.onboardingpage.screens.FirstScreen
+import com.cahyadesthian.onboarding.onboardingpage.screens.SecondScreen
+import com.cahyadesthian.onboarding.onboardingpage.screens.ThirdScreen
 
 
 class ViewPagerFragment : Fragment() {
@@ -25,13 +28,22 @@ class ViewPagerFragment : Fragment() {
         val view = viewPagerFragBinding.root
 
         val fragmentList = arrayListOf<Fragment>(
-
+            FirstScreen(),
+            SecondScreen(),
+            ThirdScreen()
         )
 
+        val adapter = ViewPagerAdapter(
+            fragmentList,
+            requireActivity().supportFragmentManager,
+            lifecycle
+        )
 
+        viewPagerFragBinding.viewpager.adapter = adapter
 
         return view
     }
+
 
 
     override fun onDestroyView() {
