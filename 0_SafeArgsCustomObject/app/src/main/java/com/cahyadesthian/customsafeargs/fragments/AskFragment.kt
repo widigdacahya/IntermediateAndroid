@@ -5,11 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavDirections
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import com.cahyadesthian.customsafeargs.AskFragmentDirections
-import com.cahyadesthian.customsafeargs.R
 import com.cahyadesthian.customsafeargs.databinding.FragmentAskBinding
 import com.cahyadesthian.customsafeargs.model.User
 

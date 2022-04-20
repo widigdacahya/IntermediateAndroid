@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/askFragment"
-        android:name="com.cahyadesthian.customsafeargs.AskFragment"
+        android:name="com.cahyadesthian.customsafeargs.fragments.AskFragment"
         android:label="fragment_ask"
         tools:layout="@layout/fragment_ask" >
         <action
