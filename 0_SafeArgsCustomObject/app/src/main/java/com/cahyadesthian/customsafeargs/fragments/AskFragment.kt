@@ -6,18 +6,41 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.cahyadesthian.customsafeargs.R
+import com.cahyadesthian.customsafeargs.databinding.FragmentAskBinding
+import com.cahyadesthian.customsafeargs.model.User
 
 
 class AskFragment : Fragment() {
 
+    private var _askFragBinding: FragmentAskBinding? = null
+    private val askFragBinding get() = _askFragBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ask, container, false)
+
+        _askFragBinding = FragmentAskBinding.inflate(inflater,container,false)
+        val view = askFragBinding.root
+
+
+        askFragBinding.btnSendAskfrag.setOnClickListener {
+            val userInputFirstName = askFragBinding.edtFirstnameAskfrag.text.toString()
+            val userInputLastName = askFragBinding.edtLastnameAskfrag.text.toString()
+
+            val user = User(userInputFirstName,userInputLastName)
+
+        }
+
+
+        return view
+
     }
 
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _askFragBinding = null
+    }
 
 }
