@@ -22,5 +22,8 @@
         <action
             android:id="@+id/action_dataReceiverFragment_to_askFragment"
             app:destination="@id/askFragment" />
+        <argument
+            android:name="currentUser"
+            app:argType="com.cahyadesthian.customsafeargs.model.User" />
     </fragment>
 </navigation>
