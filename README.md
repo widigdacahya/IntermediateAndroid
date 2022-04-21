@@ -1,2 +1,5 @@
 # IntermediateAndroid
-Personal Note Learning Intermediate Android
+Personal Note about :
+- Localization
+- Property Animation
+- ...
