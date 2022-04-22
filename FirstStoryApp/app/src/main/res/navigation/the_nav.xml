@@ -36,5 +36,14 @@
         android:id="@+id/authFragment"
         android:name="com.cahyadesthian.chystoryapp.screen.AuthFragment"
         android:label="fragment_auth"
-        tools:layout="@layout/fragment_auth" />
+        tools:layout="@layout/fragment_auth" >
+        <action
+            android:id="@+id/action_authFragment_to_registerActivity"
+            app:destination="@id/registerActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/registerActivity"
+        android:name="com.cahyadesthian.chystoryapp.screen.RegisterActivity"
+        android:label="activity_register"
+        tools:layout="@layout/activity_register" />
 </navigation>

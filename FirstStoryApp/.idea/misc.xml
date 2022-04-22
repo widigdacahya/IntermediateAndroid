@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/drawable/custom_input.xml" value="0.1" />
+        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/drawable/custom_person_ic.xml" value="0.1" />
+        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/drawable/ic_round_close_24.xml" value="0.176" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_tes.xml" value="0.36666666666666664" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_auth.xml" value="0.36666666666666664" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_first_page.xml" value="0.22" />
