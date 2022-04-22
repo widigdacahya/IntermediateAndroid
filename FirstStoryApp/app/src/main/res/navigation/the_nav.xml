@@ -9,12 +9,29 @@
         android:id="@+id/splashFrag"
         android:name="com.cahyadesthian.chystoryapp.screen.SplashFrag"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFrag_to_viewPagerOnBoarding"
+            app:destination="@id/viewPagerOnBoarding"
+            app:popUpTo="@id/splashFrag"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFrag_to_authFragment"
+            app:destination="@id/authFragment"
+            app:popUpTo="@id/splashFrag"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/viewPagerOnBoarding"
         android:name="com.cahyadesthian.chystoryapp.screen.onboarding.ViewPagerOnBoarding"
         android:label="fragment_view_pager_on_boarding"
-        tools:layout="@layout/fragment_view_pager_on_boarding" />
+        tools:layout="@layout/fragment_view_pager_on_boarding" >
+        <action
+            android:id="@+id/action_viewPagerOnBoarding_to_authFragment"
+            app:destination="@id/authFragment"
+            app:popUpTo="@id/viewPagerOnBoarding"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/authFragment"
         android:name="com.cahyadesthian.chystoryapp.screen.AuthFragment"
