@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/the_nav">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/the_nav"
+    app:startDestination="@id/splashFrag">
 
+    <fragment
+        android:id="@+id/splashFrag"
+        android:name="com.cahyadesthian.chystoryapp.screen.SplashFrag"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" />
+    <fragment
+        android:id="@+id/viewPagerOnBoarding"
+        android:name="com.cahyadesthian.chystoryapp.screen.onboarding.ViewPagerOnBoarding"
+        android:label="fragment_view_pager_on_boarding"
+        tools:layout="@layout/fragment_view_pager_on_boarding" />
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.cahyadesthian.chystoryapp.screen.AuthFragment"
+        android:label="fragment_auth"
+        tools:layout="@layout/fragment_auth" />
 </navigation>

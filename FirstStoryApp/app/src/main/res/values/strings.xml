@@ -10,4 +10,9 @@
     <string name="catch_awesome_moment">Catch awesome moment 📷</string>
     <string name="meet_other_s_life">Meet other\'s life 🙋🏻</string>
     <string name="finish">FINISH</string>
+    <string name="image_welcome_to_app">image welcome to app</string>
+    <string name="welcome_in_chy_story_app">Welcome in Chy Story App 👋</string>
+    <string name="with_this_app_you_can_share_your_story_moment_feeling_and_any_photos_with_dicoding_api">With this app, you can share your story,moment, feeling, and any photos with Dicoding API 🎉🎉🎉</string>
+    <string name="sign_in">Sign In</string>
+    <string name="register">Register</string>
 </resources>
