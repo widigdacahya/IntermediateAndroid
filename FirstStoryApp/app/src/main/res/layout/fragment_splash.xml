@@ -8,6 +8,17 @@
     android:orientation="vertical"
     tools:context=".screen.SplashFrag">
 
+    <ImageView
+        android:id="@+id/bgsplash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/bgsplashstryfix"
+        android:scaleType="centerCrop"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_hrzntl_half"
         android:orientation="horizontal"
