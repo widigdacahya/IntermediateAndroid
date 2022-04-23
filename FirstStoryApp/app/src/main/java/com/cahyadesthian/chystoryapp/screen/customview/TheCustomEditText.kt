@@ -19,6 +19,7 @@ class TheCustomEditText : AppCompatEditText, View.OnTouchListener {
 
     //like using material input edit text clear text
     private lateinit var clearAllTextBtnIc: Drawable
+    private lateinit var profileIcStart: Drawable
 
 
 
@@ -37,6 +38,7 @@ class TheCustomEditText : AppCompatEditText, View.OnTouchListener {
 
     private fun init() {
         clearAllTextBtnIc = ContextCompat.getDrawable(context, R.drawable.ic_round_close_orange_24) as Drawable
+        profileIcStart = ContextCompat.getDrawable(context,R.drawable.ic_round_person_orange_24) as Drawable
         setOnTouchListener(this)
 
         addTextChangedListener(object : TextWatcher {
@@ -45,7 +47,10 @@ class TheCustomEditText : AppCompatEditText, View.OnTouchListener {
             }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if(s.toString().isNotEmpty()) showClearIcBtn()
+                if(s.toString().isNotEmpty()) {
+                    showClearIcBtn()
+                    maintainIcProfile()
+                }
                 else hideClearIcBtn()
             }
 
@@ -128,6 +133,10 @@ class TheCustomEditText : AppCompatEditText, View.OnTouchListener {
 
     private fun hideClearIcBtn() {
         setButtonDeawables()
+    }
+
+    private fun maintainIcProfile() {
+        setButtonDeawables(startOfTheText = profileIcStart)
     }
 
     override fun onDraw(canvas: Canvas) {

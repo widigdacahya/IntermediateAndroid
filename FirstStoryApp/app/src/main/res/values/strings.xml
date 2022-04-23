@@ -15,4 +15,6 @@
     <string name="with_this_app_you_can_share_your_story_moment_feeling_and_any_photos_with_dicoding_api">With this app, you can share your story,moment, feeling, and any photos with Dicoding API 🎉🎉🎉</string>
     <string name="sign_in">Sign In</string>
     <string name="register">Register</string>
+    <string name="register_picture">Register Picture</string>
+    <string name="registration">Registration</string>
 </resources>

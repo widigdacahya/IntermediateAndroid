@@ -16,11 +16,11 @@
         android:layout_marginTop="12dp"
         android:layout_width="300dp"
         android:layout_height="160dp"
-        android:contentDescription="Register Picture" />
+        android:contentDescription="@string/register_picture" />
 
     <TextView
         android:id="@+id/tv_register"
-        android:text="Registration"
+        android:text="@string/registration"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/orange_400"
@@ -48,5 +48,7 @@
         android:layout_marginEnd="8dp"
         android:layout_width="0dp"
         android:layout_height="60dp"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
