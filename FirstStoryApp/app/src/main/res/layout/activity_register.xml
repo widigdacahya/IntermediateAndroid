@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_register"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:textAlignment="center"
         android:layout_width="0dp"
         android:layout_height="wrap_content"/>
@@ -36,10 +36,10 @@
         android:id="@+id/custom_edt_name_register"
         android:drawableStart="@drawable/custom_person_ic"
         app:layout_constraintEnd_toEndOf="parent"
-        android:drawablePadding="12dp"
-        android:background="@drawable/custom_input"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_register"
+        android:drawablePadding="12dp"
+        android:background="@drawable/custom_input"
         android:layout_marginTop="12dp"
         android:layout_marginStart="8dp"
         android:inputType="text"
@@ -48,6 +48,52 @@
         android:layout_marginEnd="8dp"
         android:layout_width="0dp"
         android:layout_height="60dp"/>
+
+    <com.cahyadesthian.chystoryapp.screen.customview.TheEmailEditText
+        android:id="@+id/custom_edt_email_register"
+        android:drawableStart="@drawable/custom_mail_ic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/custom_edt_name_register"
+        android:drawablePadding="12dp"
+        android:background="@drawable/custom_input"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="12dp"
+        android:inputType="textEmailAddress"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:layout_width="0dp"
+        android:layout_height="60dp"/>
+
+    <com.cahyadesthian.chystoryapp.screen.customview.ThePasswordlEditText
+        android:id="@+id/custom_edt_pass_register"
+        android:drawableStart="@drawable/custom_mail_ic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/custom_edt_email_register"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:paddingEnd="8dp"
+        android:paddingStart="16dp"
+        android:drawablePadding="12dp"
+        android:background="@drawable/custom_input"
+        android:inputType="textPassword"
+        android:layout_width="0dp"
+        android:layout_height="60dp"/>
+
+    <Button
+        android:id="@+id/btn_register"
+        android:text="@string/register_text"
+        android:backgroundTint="@color/orange_500"
+        app:layout_constraintTop_toBottomOf="@id/custom_edt_pass_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
 
 
 

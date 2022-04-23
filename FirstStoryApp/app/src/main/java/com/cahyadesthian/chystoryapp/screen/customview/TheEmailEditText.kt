@@ -15,7 +15,7 @@ import com.cahyadesthian.chystoryapp.R
 /*
 * Name Edit Text
 * */
-class TheCustomEditText : AppCompatEditText, View.OnTouchListener {
+class TheEmailEditText : AppCompatEditText, View.OnTouchListener {
 
 
     constructor(context: Context) : super(context) {
@@ -40,7 +40,8 @@ class TheCustomEditText : AppCompatEditText, View.OnTouchListener {
             }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                //nothing to do here
+                //maintainIcProfile()
+
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -51,17 +52,14 @@ class TheCustomEditText : AppCompatEditText, View.OnTouchListener {
 
     }
 
-
     override fun onTouch(v: View?, event: MotionEvent): Boolean {
-
-
         return false
     }
 
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        hint = "Your beautiful name"
+        hint = "Awesome People's Email"
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
     }
 
