@@ -27,6 +27,10 @@ class AuthFragment : Fragment() {
             findNavController().navigate(R.id.action_authFragment_to_registerActivity)
         }
 
+        authFragBinding.btnSignin.setOnClickListener {
+            findNavController().navigate(R.id.action_authFragment_to_loginAccActivity)
+        }
+
         return view
 
     }

@@ -19,7 +19,7 @@ import kotlin.properties.Delegates
 /*
 * Password Edit Text
 * */
-class ThePasswordlEditText : AppCompatEditText, View.OnTouchListener {
+class ThePasswordlEditText : View.OnTouchListener,ValidateEditText {
 
     private lateinit var icEye : Drawable
     private lateinit var iceEyeOff : Drawable

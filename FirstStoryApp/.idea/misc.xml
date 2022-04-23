@@ -10,11 +10,16 @@
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" value="0.1" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/drawable/ic_baseline_visibility_off_24.xml" value="0.1" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/drawable/ic_round_close_24.xml" value="0.176" />
+        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_login.xml" value="1.25" />
+        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_login_acc.xml" value="0.26197916666666665" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_register.xml" value="0.33" />
+        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_tes.xml" value="0.36666666666666664" />
+        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/content_login.xml" value="0.26197916666666665" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_auth.xml" value="0.36666666666666664" />
+        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_first.xml" value="0.26197916666666665" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_first_page.xml" value="0.22" />
+        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_second.xml" value="0.26197916666666665" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_second_page.xml" value="0.26721014492753625" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_splash.xml" value="0.2572463768115942" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_third_page.xml" value="0.26358695652173914" />

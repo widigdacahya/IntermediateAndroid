@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChyStoryApp">
         <activity
+            android:name=".screen.LoginAccActivity"
+            android:exported="false" />
+        <activity
             android:name=".screen.RegisterActivity"
             android:exported="false" />
         <activity
