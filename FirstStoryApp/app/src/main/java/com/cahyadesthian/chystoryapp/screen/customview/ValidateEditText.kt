@@ -56,7 +56,6 @@ open class ValidateEditText : AppCompatEditText {
         val userInput = text.toString()
         val isValid = editTextValidity?.validate(userInput)?: true
 
-        //if(isValid) error = null else editTextValidity?.errorMessage?: "Whooops somethin wrong"
         error = if(isValid) {
             null
         } else {

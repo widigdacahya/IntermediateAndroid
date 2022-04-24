@@ -86,6 +86,8 @@
     <Button
         android:id="@+id/btn_register"
         android:text="@string/register_text"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:backgroundTint="@color/orange_500"
         app:layout_constraintTop_toBottomOf="@id/custom_edt_pass_register"
         app:layout_constraintEnd_toEndOf="parent"

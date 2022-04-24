@@ -15,7 +15,7 @@ import com.cahyadesthian.chystoryapp.R
 /*
 * Name Edit Text
 * */
-class TheEmailEditText : AppCompatEditText, View.OnTouchListener {
+class TheEmailEditText : ValidateEditText, View.OnTouchListener {
 
 
     constructor(context: Context) : super(context) {
