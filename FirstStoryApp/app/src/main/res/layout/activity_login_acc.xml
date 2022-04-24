@@ -34,6 +34,48 @@
         android:layout_height="wrap_content"/>
 
 
+    <com.cahyadesthian.chystoryapp.screen.customview.TheEmailEditText
+        android:id="@+id/custom_edt_email_login"
+        android:drawableStart="@drawable/custom_mail_ic"
+        android:drawablePadding="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/custom_input"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_login_text"
+        android:layout_width="0dp"
+        android:layout_height="60dp"/>
+
+    <com.cahyadesthian.chystoryapp.screen.customview.ThePasswordlEditText
+        android:id="@+id/custom_edt_password_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/custom_edt_email_login"
+        android:background="@drawable/custom_input"
+        android:inputType="textPassword"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp"
+        android:layout_width="0dp"
+        android:layout_height="60dp"/>
+
+    <Button
+        android:id="@+id/btn_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/custom_edt_password_login"
+        android:layout_marginTop="16dp"
+        android:text="@string/logintext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

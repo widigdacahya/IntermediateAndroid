@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.cahyadesthian.chystoryapp.R
 import com.cahyadesthian.chystoryapp.databinding.ActivityRegisterBinding
+
 import com.cahyadesthian.chystoryapp.screen.customview.ValidateEditText
 
 class RegisterActivity : AppCompatActivity() {
@@ -24,6 +25,8 @@ class RegisterActivity : AppCompatActivity() {
             override val errorMessage: String
                 get() = "At least need 6 character here"
         })
+
+        supportActionBar?.title = "Register"
 
     }
 }
