@@ -13,7 +13,6 @@ class MainViewModel : ViewModel() {
     private val _loginUiStete = MutableStateFlow<LoginUiState>(LoginUiState.Empty)
     val loginUiState : StateFlow<LoginUiState> = _loginUiStete
 
-
     //custom type to passed on stateflow type yang empty
     sealed class LoginUiState {
         object Success : LoginUiState()
