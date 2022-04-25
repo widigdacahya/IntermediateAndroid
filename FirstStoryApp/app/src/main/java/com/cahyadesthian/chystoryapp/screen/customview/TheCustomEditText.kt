@@ -63,6 +63,6 @@ class TheCustomEditText : AppCompatEditText, View.OnTouchListener {
 
     }
 
-    
+
 
 }
