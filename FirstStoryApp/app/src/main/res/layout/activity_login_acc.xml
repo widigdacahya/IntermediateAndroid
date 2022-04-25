@@ -33,9 +33,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"/>
 
-
-    <com.cahyadesthian.chystoryapp.screen.customview.TheEmailEditText
-        android:id="@+id/custom_edt_email_login"
+    <com.cahyadesthian.chystoryapp.screen.customview.TheCustomEmailEditTextItself
+        android:id="@+id/custom_email_login_fix"
         android:drawableStart="@drawable/custom_mail_ic"
         android:drawablePadding="12dp"
         android:layout_marginStart="8dp"
@@ -51,33 +50,38 @@
         android:layout_width="0dp"
         android:layout_height="60dp"/>
 
-    <com.cahyadesthian.chystoryapp.screen.customview.ThePasswordlEditText
-        android:id="@+id/custom_edt_password_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/custom_edt_email_login"
-        android:background="@drawable/custom_input"
-        android:inputType="textPassword"
+
+    <com.cahyadesthian.chystoryapp.screen.customview.TheCustomPaswordEditTextItself
+        android:id="@+id/custom_pass_login_fix"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:paddingStart="16dp"
         android:paddingEnd="8dp"
+        android:paddingStart="16dp"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@id/custom_email_login_fix"
+        app:layout_constraintStart_toStartOf="@id/custom_email_login_fix"
+        app:layout_constraintTop_toBottomOf="@id/custom_email_login_fix"
+        android:background="@drawable/custom_input"
         android:layout_width="0dp"
         android:layout_height="60dp"/>
+
+
 
     <Button
         android:id="@+id/btn_login"
         android:backgroundTint="@color/orange_500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/custom_edt_password_login"
+        app:layout_constraintTop_toBottomOf="@id/custom_pass_login_fix"
         android:layout_marginTop="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/logintext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"/>
+
+
+
+
 
 
 

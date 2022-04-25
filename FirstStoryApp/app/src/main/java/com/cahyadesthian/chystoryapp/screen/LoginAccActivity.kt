@@ -16,31 +16,6 @@ class LoginAccActivity : AppCompatActivity() {
         loginActBinding = ActivityLoginAccBinding.inflate(layoutInflater)
         setContentView(loginActBinding.root)
 
-        loginActBinding.customEdtPasswordLogin.setOnValidityCallback(object : ValidateEditText.EditTextValidation {
-
-            override fun validate(editTextInput: String): Boolean {
-                return (editTextInput.length >= 6)
-            }
-
-            override val errorMessage: String
-                get() = "Whoops, at least need 6 character here"
-
-        })
-
-        loginActBinding.customEdtEmailLogin.setOnValidityCallback(object : ValidateEditText.EditTextValidation {
-
-            override fun validate(editTextInput: String): Boolean {
-                return Patterns.EMAIL_ADDRESS.matcher(editTextInput).matches()
-            }
-
-            override val errorMessage: String
-                get() = "Whoops, please type the correct email"
-
-
-        })
-
-
-
         supportActionBar?.title = "Login"
 
 

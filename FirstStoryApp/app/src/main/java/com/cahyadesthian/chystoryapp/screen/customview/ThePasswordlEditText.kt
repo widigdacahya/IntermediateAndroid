@@ -111,4 +111,8 @@ class ThePasswordlEditText : View.OnTouchListener,ValidateEditText {
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
     }
 
+
+
+
+
 }
