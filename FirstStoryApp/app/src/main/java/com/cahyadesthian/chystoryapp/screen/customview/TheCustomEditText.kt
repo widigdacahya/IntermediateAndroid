@@ -2,15 +2,13 @@ package com.cahyadesthian.chystoryapp.screen.customview
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.drawable.Drawable
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
-import androidx.core.content.ContextCompat
-import com.cahyadesthian.chystoryapp.R
+
 
 /*
 * Name Edit Text
@@ -53,16 +51,18 @@ class TheCustomEditText : AppCompatEditText, View.OnTouchListener {
 
 
     override fun onTouch(v: View?, event: MotionEvent): Boolean {
-
-
         return false
     }
 
 
     override fun onDraw(canvas: Canvas) {
+
         super.onDraw(canvas)
         hint = "Your beautiful name"
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
+
     }
+
+    
 
 }

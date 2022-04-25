@@ -1,5 +1,4 @@
 package com.cahyadesthian.chystoryapp.screen.customview
-
 import android.content.Context
 import android.graphics.Canvas
 import android.text.Editable
@@ -10,9 +9,17 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
 
+
+
+/*
+* Email Edit text
+* pattern match EMAIL_ADDRESS
+*  */
+
 class TheCustomEmailEditTextItself : AppCompatEditText, View.OnTouchListener {
 
     private var emailEditTextValidity : EmailEditTextValidationFix? = null
+
 
     interface EmailEditTextValidationFix {
         val errorMessageEmail : String
@@ -31,6 +38,7 @@ class TheCustomEmailEditTextItself : AppCompatEditText, View.OnTouchListener {
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         init()
     }
+
 
     private fun init() {
         addTextChangedListener(object : TextWatcher {
@@ -72,10 +80,14 @@ class TheCustomEmailEditTextItself : AppCompatEditText, View.OnTouchListener {
         return false
     }
 
+
     override fun onDraw(canvas: Canvas) {
+
         super.onDraw(canvas)
         hint = "Most Awesome People's Email"
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
+
     }
+
 
 }

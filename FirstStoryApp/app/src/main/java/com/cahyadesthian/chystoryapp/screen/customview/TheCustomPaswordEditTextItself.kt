@@ -14,10 +14,17 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import com.cahyadesthian.chystoryapp.R
 
+
+
+/*
+*  Password EditText
+* */
+
 class TheCustomPaswordEditTextItself : AppCompatEditText, View.OnTouchListener {
 
     private lateinit var icEye : Drawable
     private var editTextValidity : EditTextValidationFix? = null
+
 
     interface EditTextValidationFix {
         val errorMessage : String
@@ -36,6 +43,7 @@ class TheCustomPaswordEditTextItself : AppCompatEditText, View.OnTouchListener {
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         init()
     }
+
 
     private fun init() {
 
@@ -74,15 +82,12 @@ class TheCustomPaswordEditTextItself : AppCompatEditText, View.OnTouchListener {
             editTextValidity?.errorMessage?: "Whoops Hey,at least need 6 character here."
         }
 
-
-
-
         return isValid
     }
 
 
-
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+
         val eyeIcStart : Float
         val eyeIcEnd : Float
         var icClicked = false
@@ -133,20 +138,29 @@ class TheCustomPaswordEditTextItself : AppCompatEditText, View.OnTouchListener {
         return false
     }
 
+
     private fun setButtonDeawables(
         startOfTheText: Drawable? = null,
         topOfTheText: Drawable? = null,
         endOfTheText: Drawable? = null,
         bottomOfTheText: Drawable? = null
     ) {
+
         setCompoundDrawablesWithIntrinsicBounds(
             startOfTheText, topOfTheText,endOfTheText,bottomOfTheText
         )
+
     }
 
+
     override fun onDraw(canvas: Canvas) {
+
         super.onDraw(canvas)
         hint = "Your Amazing Password"
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
+
     }
+
+
+
 }
