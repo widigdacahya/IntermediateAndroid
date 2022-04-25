@@ -2,9 +2,7 @@ package com.cahyadesthian.chystoryapp.screen
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Patterns
 import com.cahyadesthian.chystoryapp.databinding.ActivityLoginAccBinding
-import com.cahyadesthian.chystoryapp.screen.customview.ValidateEditText
 
 
 class LoginAccActivity : AppCompatActivity() {

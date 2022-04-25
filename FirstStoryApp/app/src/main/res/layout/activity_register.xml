@@ -49,7 +49,7 @@
         android:layout_width="0dp"
         android:layout_height="60dp"/>
 
-    <com.cahyadesthian.chystoryapp.screen.customview.TheEmailEditText
+    <com.cahyadesthian.chystoryapp.screen.customview.TheCustomEmailEditTextItself
         android:id="@+id/custom_edt_email_register"
         android:drawableStart="@drawable/custom_mail_ic"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +66,7 @@
         android:layout_width="0dp"
         android:layout_height="60dp"/>
 
-    <com.cahyadesthian.chystoryapp.screen.customview.ThePasswordlEditText
+    <com.cahyadesthian.chystoryapp.screen.customview.TheCustomPaswordEditTextItself
         android:id="@+id/custom_edt_pass_register"
         android:drawableStart="@drawable/custom_mail_ic"
         app:layout_constraintEnd_toEndOf="parent"
