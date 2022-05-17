@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(mainBinding.root)
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        mainBinding.pbMainUI.visibility = View.VISIBLE
 
         backgroundAnimate()
         requestDogImgApi()
@@ -72,8 +73,12 @@ class MainActivity : AppCompatActivity() {
                     withContext(Dispatchers.Main) {
                         Glide.with(applicationContext).load(response.url).into(mainBinding.ivMainUI)
                         mainBinding.ivMainUI.visibility = View.VISIBLE
+                        mainBinding.pbMainUI.visibility = View.GONE
                     }
                 } else {
+                    withContext(Dispatchers.Main) {
+                        mainBinding.pbMainUI.visibility = View.VISIBLE
+                    }
                     requestDogImgApi()
                 }
             } catch (e: Exception) {
