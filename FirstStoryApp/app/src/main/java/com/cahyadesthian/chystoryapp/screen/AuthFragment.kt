@@ -24,11 +24,11 @@ class AuthFragment : Fragment() {
         val view = authFragBinding.root
 
         authFragBinding.btnRegister.setOnClickListener {
-            findNavController().navigate(R.id.action_authFragment_to_registerActivity)
+            findNavController().navigate(R.id.action_authFragment_to_registerFragmentFix)
         }
 
         authFragBinding.btnSignin.setOnClickListener {
-            findNavController().navigate(R.id.action_authFragment_to_loginAccActivity)
+            findNavController().navigate(R.id.action_authFragment_to_loginAccFragmentFix)
         }
 
         return view
