@@ -123,6 +123,12 @@
     </androidx.cardview.widget.CardView>
 
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/loading_group_login_frag"
+        app:constraint_referenced_ids="pb_login_frag,cv_text_info_login_frag,iv_black_overlay_login_frag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
 
 

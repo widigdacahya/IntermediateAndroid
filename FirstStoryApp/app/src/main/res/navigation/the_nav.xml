@@ -48,10 +48,17 @@
         android:id="@+id/loginAccFragmentFix"
         android:name="com.cahyadesthian.chystoryapp.screen.LoginAccFragmentFix"
         android:label="fragment_login_acc_fix"
-        tools:layout="@layout/fragment_login_acc_fix" />
+        tools:layout="@layout/fragment_login_acc_fix"/>
+
     <fragment
         android:id="@+id/registerFragmentFix"
         android:name="com.cahyadesthian.chystoryapp.screen.RegisterFragmentFix"
         android:label="fragment_register_fix"
-        tools:layout="@layout/fragment_register_fix" />
+        tools:layout="@layout/fragment_register_fix" >
+        <action
+            android:id="@+id/action_registerFragmentFix_to_loginAccFragmentFix"
+            app:destination="@id/loginAccFragmentFix"
+            app:popUpTo="@id/authFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

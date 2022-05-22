@@ -6,15 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.cahyadesthian.chystoryapp.R
+import com.cahyadesthian.chystoryapp.databinding.FragmentLoginAccFixBinding
 
 class LoginAccFragmentFix : Fragment() {
+
+    private var _loginFragBinding : FragmentLoginAccFixBinding? = null
+    private val loginFragBinding get() = _loginFragBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login_acc_fix, container, false)
+        _loginFragBinding = FragmentLoginAccFixBinding.inflate(inflater,container,false)
+        val view = loginFragBinding.root
+
+        return view
     }
 
 
