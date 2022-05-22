@@ -1,17 +1,13 @@
 package com.cahyadesthian.chystoryapp.screen
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.transition.Visibility
 import android.view.View
 import android.widget.Toast
-import androidx.core.view.isVisible
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.cahyadesthian.chystoryapp.databinding.ActivityRegisterBinding
 import com.cahyadesthian.chystoryapp.viewmodel.RegisterViewModel
-import kotlinx.coroutines.flow.collectLatest
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -21,7 +17,7 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        regBinding = ActivityRegisterBinding.inflate(layoutInflater)
+        regBinding = com.cahyadesthian.chystoryapp.databinding.ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(regBinding.root)
 
 
@@ -47,6 +43,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
             val intentToLogin = Intent(this,LoginAccActivity::class.java)
+            intentToLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intentToLogin)
         }
 
