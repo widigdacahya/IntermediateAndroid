@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/drawable/black_gradient.xml" value="0.1" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/drawable/custom_eye_ic.xml" value="0.1" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/drawable/custom_input.xml" value="0.1" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/drawable/custom_mail_ic.xml" value="0.213" />
@@ -13,7 +14,7 @@
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_login.xml" value="1.25" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_login_acc.xml" value="0.14" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_register.xml" value="0.18" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_tes.xml" value="0.36666666666666664" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/content_login.xml" value="0.26197916666666665" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_auth.xml" value="0.36666666666666664" />
