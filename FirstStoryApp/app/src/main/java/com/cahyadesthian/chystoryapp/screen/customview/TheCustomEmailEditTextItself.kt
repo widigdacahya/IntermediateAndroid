@@ -67,7 +67,7 @@ class TheCustomEmailEditTextItself : AppCompatEditText, View.OnTouchListener {
         error = if(isValid) {
             null
         } else {
-            emailEditTextValidity?.errorMessageEmail?: "Hey, Please input correct email"
+            emailEditTextValidity?.errorMessageEmail?: "Hey, Please input correct email \uD83D\uDE4F"
         }
 
 

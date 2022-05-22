@@ -79,7 +79,7 @@ class TheCustomPaswordEditTextItself : AppCompatEditText, View.OnTouchListener {
         error = if(isValid) {
             null
         } else {
-            editTextValidity?.errorMessage?: "Whoops Hey,at least need 6 character here."
+            editTextValidity?.errorMessage?: "Whoops \uD83D\uDD90, need at least 6 character."
         }
 
         return isValid
