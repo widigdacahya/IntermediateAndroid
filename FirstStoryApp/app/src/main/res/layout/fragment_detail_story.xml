@@ -14,14 +14,13 @@
 
         <ImageView
             android:id="@+id/iv_story_detail"
-            android:transitionName="image_story"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/tv_story_username"
             tools:src="@drawable/placeholderpict"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
+            android:scaleType="centerInside"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
