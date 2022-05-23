@@ -8,15 +8,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.datastore.core.DataStore
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.cahyadesthian.chystoryapp.R
 import com.cahyadesthian.chystoryapp.databinding.FragmentSplashBinding
+import com.cahyadesthian.chystoryapp.screen.util.SessionDataPreference
+import com.cahyadesthian.chystoryapp.viewmodel.SharedViewModel
 
 
 class SplashFrag : Fragment() {
 
     private var _splashFragBinding : FragmentSplashBinding? = null
     private val splashFragBinding get() = _splashFragBinding!!
+
 
 
     override fun onCreateView(
@@ -27,13 +32,35 @@ class SplashFrag : Fragment() {
         _splashFragBinding = FragmentSplashBinding.inflate(inflater,container,false)
         val view = splashFragBinding.root
 
-        Handler().postDelayed({
-            if (onBoardingFinished()) {
-                findNavController().navigate(R.id.action_splashFrag_to_authFragment)
-            } else {
-                findNavController().navigate(R.id.action_splashFrag_to_viewPagerOnBoarding)
-            }
-        },750)
+//        sharedViewModel.seeToken().observe(viewLifecycleOwner) {
+//
+//            if(it.isNotEmpty()) {
+//                goToStories(it)
+//            } else {
+//                onBoardingThings()
+//
+//
+//            }
+//
+//        }
+
+        onBoardingThings()
+//        Handler().postDelayed({
+//            if (onBoardingFinished()) {
+//
+////                sharedViewModel.seeToken().observe(viewLifecycleOwner) {
+////                    if(it.isNotEmpty()) {
+////                        goToStories(it)
+////                    } else {
+////                        findNavController().navigate(R.id.action_splashFrag_to_authFragment)
+////                    }
+////                }
+//
+//                findNavController().navigate(R.id.action_splashFrag_to_authFragment)
+//            } else {
+//                findNavController().navigate(R.id.action_splashFrag_to_viewPagerOnBoarding)
+//            }
+//        },750)
 
         return view
 
@@ -54,5 +81,27 @@ class SplashFrag : Fragment() {
         super.onResume()
         (activity as AppCompatActivity).supportActionBar?.hide()
     }
+
+
+
+    private fun onBoardingThings() {
+        Handler().postDelayed({
+            if (onBoardingFinished()) {
+
+//                sharedViewModel.seeToken().observe(viewLifecycleOwner) {
+//                    if(it.isNotEmpty()) {
+//                        goToStories(it)
+//                    } else {
+//                        findNavController().navigate(R.id.action_splashFrag_to_authFragment)
+//                    }
+//                }
+
+                findNavController().navigate(R.id.action_splashFrag_to_authFragment)
+            } else {
+                findNavController().navigate(R.id.action_splashFrag_to_viewPagerOnBoarding)
+            }
+        },750)
+    }
+
 
 }

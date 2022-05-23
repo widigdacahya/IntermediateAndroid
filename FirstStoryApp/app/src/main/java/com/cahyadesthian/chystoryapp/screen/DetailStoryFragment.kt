@@ -45,7 +45,11 @@ class DetailStoryFragment : Fragment() {
     private fun setStory(storyItem : ItemListStory) {
         detailStoryBinding?.apply {
             ivStoryDetail.glideLoad(storyItem.photoUrl)
+            //ivStoryDetail.transitionName = getString(R.string.image_story, storyItem.id)
+
             tvStoryUsername.text = storyItem.name
+            //tvStoryUsername.transitionName = getString(R.string.username_story,storyItem.name)
+
             tvStoryDescription.text = storyItem.description
         }
     }

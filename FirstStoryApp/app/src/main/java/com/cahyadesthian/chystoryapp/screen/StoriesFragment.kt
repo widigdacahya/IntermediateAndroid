@@ -103,15 +103,16 @@ class StoriesFragment : Fragment() {
     private fun adapterStorySetup(storyList: ArrayList<ItemListStory>) {
         storiesBinding.rvStories.adapter = AdapterListStory(storyList).apply {
             setOnItemClickCallback(object : AdapterListStory.OnItemClickCallback {
+
                 override fun onItemClicked(story: ItemListStory, storyBinding: ItemStoryBinding) {
-                    val extraData = FragmentNavigatorExtras(
-                        storyBinding.ivStoryPreview to getString(R.string.image_story, story.id),
-                        storyBinding.tvUserUploadBy to getString(R.string.username_story, story.id)
-                    )
+//                    val extraData = FragmentNavigatorExtras(
+//                        storyBinding.ivStoryPreview to getString(R.string.image_story, story.id),
+//                        storyBinding.tvUserUploadBy to getString(R.string.username_story, story.id)
+//                    )
 
                     view?.findNavController()?.navigate(
                         R.id.action_storiesFragment_to_detailStoryFragment,
-                        bundleOf("story" to story),null,extraData
+                        bundleOf("story" to story),null
 
                     )
                 }
