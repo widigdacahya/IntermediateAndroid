@@ -98,5 +98,13 @@
         <argument
             android:name="token"
             app:argType="string" />
+        <action
+            android:id="@+id/action_addStoryFragment_to_cameraStoryFragment"
+            app:destination="@id/cameraStoryFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/cameraStoryFragment"
+        android:name="com.cahyadesthian.chystoryapp.screen.CameraStoryFragment"
+        android:label="fragment_camera_story"
+        tools:layout="@layout/fragment_camera_story" />
 </navigation>

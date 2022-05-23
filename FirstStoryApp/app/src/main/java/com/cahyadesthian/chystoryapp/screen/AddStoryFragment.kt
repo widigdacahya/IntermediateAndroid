@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -18,14 +19,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.cahyadesthian.chystoryapp.R
 import com.cahyadesthian.chystoryapp.databinding.FragmentAddStoryBinding
+import com.cahyadesthian.chystoryapp.screen.util.rotateBitmap
 import com.cahyadesthian.chystoryapp.screen.util.uriToFile
 import com.cahyadesthian.chystoryapp.viewmodel.AddStoryViewModel
 import java.io.File
-
+import java.net.URI
 
 
 class AddStoryFragment : Fragment() {
@@ -84,7 +87,7 @@ class AddStoryFragment : Fragment() {
         }
 
         addStoryBinding?.btnCamera?.setOnClickListener {
-
+            findNavController().navigate(R.id.action_addStoryFragment_to_cameraStoryFragment)
         }
 
 
@@ -113,6 +116,10 @@ class AddStoryFragment : Fragment() {
                 }
             }
 
+        }
+
+        setFragmentResultListener(CameraStoryFragment.CAMERA_RES) { _, bundle ->
+            showImageCaptured(bundle)
         }
 
 
@@ -161,6 +168,18 @@ class AddStoryFragment : Fragment() {
 
         addStoryViewModel.addStory(fileImage as File, desc, getString(R.string.bearerAuth,userToken) )
 
+    }
+
+    private fun showImageCaptured(bundle: Bundle) {
+
+        val uri = bundle.getParcelable<Uri>(CameraStoryFragment.PICT) as Uri
+        val isBackCamera = bundle.get(CameraStoryFragment.IS_BACK_CAMERA) as Boolean
+
+        fileImage = uriToFile(uri, context as Context)
+        val res = rotateBitmap(BitmapFactory.decodeFile(fileImage?.path),isBackCamera)
+
+
+        addStoryBinding?.ivPreviewUserStory?.setImageBitmap(res)
     }
 
 
