@@ -11,6 +11,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -51,7 +52,7 @@ class StoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        userToken = StoriesFragmentArgs.fromBundle(arguments as Bundle).token
+        userToken = fromBundle(arguments as Bundle).token
 
         storyViewModel.isLoading.observe(viewLifecycleOwner) {
             loadingTHings(it)
@@ -74,6 +75,10 @@ class StoriesFragment : Fragment() {
         storiesBinding.rvStories.layoutManager = rvLayoutManager
         storiesBinding.rvStories.setHasFixedSize(true)
 
+        storiesBinding.fabAddStory.setOnClickListener {
+            val toNewStory = StoriesFragmentDirections.actionStoriesFragmentToAddStoryFragment(userToken)
+            findNavController().navigate(toNewStory)
+        }
 
     }
 
@@ -106,8 +111,8 @@ class StoriesFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _storiesBinding = null
     }
 }

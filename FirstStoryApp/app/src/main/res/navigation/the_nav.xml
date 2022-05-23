@@ -66,6 +66,9 @@
         <action
             android:id="@+id/action_storiesFragment_to_detailStoryFragment"
             app:destination="@id/detailStoryFragment" />
+        <action
+            android:id="@+id/action_storiesFragment_to_addStoryFragment"
+            app:destination="@id/addStoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailStoryFragment"
@@ -86,5 +89,14 @@
         <action
             android:id="@+id/action_loginFragment_to_storiesFragment"
             app:destination="@id/storiesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addStoryFragment"
+        android:name="com.cahyadesthian.chystoryapp.screen.AddStoryFragment"
+        android:label="fragment_add_story"
+        tools:layout="@layout/fragment_add_story" >
+        <argument
+            android:name="token"
+            app:argType="string" />
     </fragment>
 </navigation>
