@@ -100,7 +100,6 @@ class LoginFragment : Fragment() {
     }
 
     private fun goToStories(token:String) {
-        //val navAction = LoginAccFragmentFixDirections.actionLoginAccFragmentFixToStoriesFragment().
         val navToStoryList = LoginFragmentDirections.actionLoginFragmentToStoriesFragment(token)
         findNavController().navigate(navToStoryList)
     }

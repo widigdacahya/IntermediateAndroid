@@ -28,35 +28,9 @@ class SplashFrag : Fragment() {
         _splashFragBinding = FragmentSplashBinding.inflate(inflater,container,false)
         val view = splashFragBinding.root
 
-//        sharedViewModel.seeToken().observe(viewLifecycleOwner) {
-//
-//            if(it.isNotEmpty()) {
-//                goToStories(it)
-//            } else {
-//                onBoardingThings()
-//
-//
-//            }
-//
-//        }
 
         onBoardingThings()
-//        Handler().postDelayed({
-//            if (onBoardingFinished()) {
-//
-////                sharedViewModel.seeToken().observe(viewLifecycleOwner) {
-////                    if(it.isNotEmpty()) {
-////                        goToStories(it)
-////                    } else {
-////                        findNavController().navigate(R.id.action_splashFrag_to_authFragment)
-////                    }
-////                }
-//
-//                findNavController().navigate(R.id.action_splashFrag_to_authFragment)
-//            } else {
-//                findNavController().navigate(R.id.action_splashFrag_to_viewPagerOnBoarding)
-//            }
-//        },750)
+
 
         return view
 
@@ -83,14 +57,6 @@ class SplashFrag : Fragment() {
     private fun onBoardingThings() {
         Handler().postDelayed({
             if (onBoardingFinished()) {
-
-//                sharedViewModel.seeToken().observe(viewLifecycleOwner) {
-//                    if(it.isNotEmpty()) {
-//                        goToStories(it)
-//                    } else {
-//                        findNavController().navigate(R.id.action_splashFrag_to_authFragment)
-//                    }
-//                }
 
                 findNavController().navigate(R.id.action_splashFrag_to_authFragment)
             } else {
