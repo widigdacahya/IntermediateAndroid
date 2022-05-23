@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(mainBinding.root)
-        supportActionBar?.hide()
+        //supportActionBar?.hide()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

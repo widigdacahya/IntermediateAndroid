@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -122,6 +123,11 @@ class StoriesFragment : Fragment() {
     private fun newStoryHere() {
         Toast.makeText(activity, "Your story there", Toast.LENGTH_SHORT).show()
         storyViewModel.getAllStory()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity).supportActionBar?.show()
     }
 
     override fun onDestroyView() {

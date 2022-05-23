@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import com.cahyadesthian.chystoryapp.R
 import com.cahyadesthian.chystoryapp.databinding.FragmentDetailStoryBinding
 import com.cahyadesthian.chystoryapp.model.ItemListStory
@@ -39,12 +40,23 @@ class DetailStoryFragment : Fragment() {
         _detailStoryFragBinding = null
     }
 
+
+
     private fun setStory(storyItem : ItemListStory) {
         detailStoryBinding?.apply {
             ivStoryDetail.glideLoad(storyItem.photoUrl)
             tvStoryUsername.text = storyItem.name
             tvStoryDescription.text = storyItem.description
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity).supportActionBar?.apply {
+            show()
+            title = "Detail Story"
+        }
+
     }
 
 }

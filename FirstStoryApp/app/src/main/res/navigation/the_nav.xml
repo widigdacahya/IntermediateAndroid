@@ -90,7 +90,9 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_storiesFragment"
-            app:destination="@id/storiesFragment" />
+            app:destination="@id/storiesFragment"
+            app:popUpTo="@id/authFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/addStoryFragment"
