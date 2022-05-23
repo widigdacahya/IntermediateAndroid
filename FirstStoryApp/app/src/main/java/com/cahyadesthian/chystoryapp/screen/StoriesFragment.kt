@@ -1,22 +1,18 @@
 package com.cahyadesthian.chystoryapp.screen
 
-import android.content.res.Configuration
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.cahyadesthian.chystoryapp.R
 import com.cahyadesthian.chystoryapp.databinding.FragmentStoriesBinding
 import com.cahyadesthian.chystoryapp.databinding.ItemStoryBinding
@@ -92,12 +88,7 @@ class StoriesFragment : Fragment() {
     }
 
     private fun loadingTHings(isLoading: Boolean) {
-        if(isLoading) {
-            storiesBinding.pbStories.visibility = View.VISIBLE
-        } else {
-            storiesBinding.pbStories.visibility = View.GONE
-        }
-
+        if(isLoading) storiesBinding.pbStories.visibility = View.VISIBLE else storiesBinding.pbStories.visibility = View.GONE
     }
 
     private fun adapterStorySetup(storyList: ArrayList<ItemListStory>) {
@@ -105,10 +96,6 @@ class StoriesFragment : Fragment() {
             setOnItemClickCallback(object : AdapterListStory.OnItemClickCallback {
 
                 override fun onItemClicked(story: ItemListStory, storyBinding: ItemStoryBinding) {
-//                    val extraData = FragmentNavigatorExtras(
-//                        storyBinding.ivStoryPreview to getString(R.string.image_story, story.id),
-//                        storyBinding.tvUserUploadBy to getString(R.string.username_story, story.id)
-//                    )
 
                     view?.findNavController()?.navigate(
                         R.id.action_storiesFragment_to_detailStoryFragment,
@@ -122,7 +109,7 @@ class StoriesFragment : Fragment() {
     }
 
     private fun newStoryHere() {
-        Toast.makeText(activity, "Your story there", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "Your story uploaded \uD83C\uDF89 ", Toast.LENGTH_SHORT).show()
         storyViewModel.getAllStory()
     }
 

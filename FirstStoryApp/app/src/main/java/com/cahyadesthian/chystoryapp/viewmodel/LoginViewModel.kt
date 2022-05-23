@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.cahyadesthian.chystoryapp.model.InfoResponse
 import com.cahyadesthian.chystoryapp.model.LoginResponse
 import com.cahyadesthian.chystoryapp.networking.Api
-import com.cahyadesthian.chystoryapp.networking.ApiService
 import com.cahyadesthian.chystoryapp.screen.util.Event
 import com.google.gson.Gson
 import retrofit2.Call

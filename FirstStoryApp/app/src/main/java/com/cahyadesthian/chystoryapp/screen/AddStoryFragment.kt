@@ -8,16 +8,15 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -28,7 +27,6 @@ import com.cahyadesthian.chystoryapp.screen.util.rotateBitmap
 import com.cahyadesthian.chystoryapp.screen.util.uriToFile
 import com.cahyadesthian.chystoryapp.viewmodel.AddStoryViewModel
 import java.io.File
-import java.net.URI
 
 
 class AddStoryFragment : Fragment() {
@@ -128,8 +126,10 @@ class AddStoryFragment : Fragment() {
     private fun loadingThings(isLoading: Boolean) {
         if(isLoading) {
             addStoryBinding?.loadingAddStory?.visibility = View.VISIBLE
+            addStoryBinding?.btnUpload?.isEnabled = false
         } else {
             addStoryBinding?.loadingAddStory?.visibility = View.GONE
+            addStoryBinding?.loadingAddStory?.isEnabled = true
         }
     }
 

@@ -1,12 +1,11 @@
 package com.cahyadesthian.chystoryapp.screen
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import com.cahyadesthian.chystoryapp.R
+import androidx.fragment.app.Fragment
 import com.cahyadesthian.chystoryapp.databinding.FragmentDetailStoryBinding
 import com.cahyadesthian.chystoryapp.model.ItemListStory
 import com.cahyadesthian.chystoryapp.screen.util.glideLoad

@@ -3,18 +3,14 @@ package com.cahyadesthian.chystoryapp.screen
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.datastore.core.DataStore
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.cahyadesthian.chystoryapp.R
 import com.cahyadesthian.chystoryapp.databinding.FragmentSplashBinding
-import com.cahyadesthian.chystoryapp.screen.util.SessionDataPreference
-import com.cahyadesthian.chystoryapp.viewmodel.SharedViewModel
 
 
 class SplashFrag : Fragment() {
