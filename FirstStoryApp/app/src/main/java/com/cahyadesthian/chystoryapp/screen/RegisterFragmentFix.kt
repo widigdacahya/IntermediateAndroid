@@ -66,7 +66,7 @@ class RegisterFragmentFix : Fragment() {
 //                    if (changeToLogin != null) {
 //                        changeToLogin.commit()
 //                    }
-                    findNavController().navigate(R.id.action_registerFragmentFix_to_loginAccFragmentFix)
+                    findNavController().navigate(R.id.action_registerFragmentFix_to_loginFragment)
 
                 }
             }

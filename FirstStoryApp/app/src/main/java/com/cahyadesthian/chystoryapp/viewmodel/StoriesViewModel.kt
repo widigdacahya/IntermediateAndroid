@@ -17,9 +17,7 @@ import retrofit2.Response
 
 class StoriesViewModel(private val authThings: String) : ViewModel(){
 
-    init {
-        getAllStory()
-    }
+
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -29,6 +27,10 @@ class StoriesViewModel(private val authThings: String) : ViewModel(){
 
     private val _stories = MutableLiveData<List<ItemListStory>>()
     val stories: LiveData<List<ItemListStory>> = _stories
+
+    init {
+        getAllStory()
+    }
 
     fun getAllStory() {
 

@@ -51,7 +51,7 @@ class StoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        userToken = StoriesFragmentArgs.fromBundle(arguments as Bundle).userToken
+        userToken = StoriesFragmentArgs.fromBundle(arguments as Bundle).token
 
         storyViewModel.isLoading.observe(viewLifecycleOwner) {
             loadingTHings(it)
