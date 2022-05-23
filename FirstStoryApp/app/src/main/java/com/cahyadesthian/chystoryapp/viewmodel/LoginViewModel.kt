@@ -50,8 +50,10 @@ class LoginViewModel : ViewModel() {
 
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
 
-                    t.message?.let { Log.d("Failure login", it)}
                     _isLoading.value = false
+
+                    t.message?.let { Log.d("Failure login", it)}
+
                     _error.value = Event(t.message.toString())
                 }
 

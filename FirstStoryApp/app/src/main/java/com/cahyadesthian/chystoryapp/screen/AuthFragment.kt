@@ -1,5 +1,7 @@
 package com.cahyadesthian.chystoryapp.screen
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -46,6 +48,8 @@ class AuthFragment : Fragment() {
             findNavController().navigate(R.id.action_authFragment_to_loginFragment)
         }
 
+        animateAuth()
+
         return view
 
     }
@@ -56,9 +60,33 @@ class AuthFragment : Fragment() {
         findNavController().navigate(toLoginToBeLogged)
     }
 
+    private fun animateAuth() {
+
+        val illustrateAnimate = ObjectAnimator.ofFloat(authFragBinding.cvImage, View.ALPHA,1f).setDuration(1300)
+
+        val tvWelcomeAnimate = ObjectAnimator.ofFloat(authFragBinding.tvWelcome,View.ALPHA,1f).setDuration(500)
+        val tvDescAnimate = ObjectAnimator.ofFloat(authFragBinding.tvDesc, View.ALPHA,1f).setDuration(500)
+        val btnRegisterAnimate = ObjectAnimator.ofFloat(authFragBinding.btnRegister, View.ALPHA,1f).setDuration(500)
+        val btnSignInAnimate = ObjectAnimator.ofFloat(authFragBinding.btnSignin, View.ALPHA,1f).setDuration(500)
+
+        AnimatorSet().apply {
+            playSequentially(illustrateAnimate,tvWelcomeAnimate,tvDescAnimate,btnRegisterAnimate,btnSignInAnimate)
+            start()
+        }
+
+        ObjectAnimator.ofFloat(authFragBinding.cvImage,View.TRANSLATION_X,-25f,25f).apply {
+            duration=6000
+            repeatMode = ObjectAnimator.REVERSE
+            repeatCount = ObjectAnimator.INFINITE
+        }.start()
+    }
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _authFragBinding = null
     }
+
+
 
 }

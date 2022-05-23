@@ -74,6 +74,10 @@ class RegisterFragmentFix : Fragment() {
 
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _regFragBinding = null
+    }
 
     override fun onDestroy() {
         super.onDestroy()

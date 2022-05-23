@@ -52,7 +52,9 @@
         tools:layout="@layout/fragment_register_fix" >
         <action
             android:id="@+id/action_registerFragmentFix_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/authFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/storiesFragment"
