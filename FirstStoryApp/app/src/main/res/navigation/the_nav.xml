@@ -48,7 +48,13 @@
         android:id="@+id/loginAccFragmentFix"
         android:name="com.cahyadesthian.chystoryapp.screen.LoginAccFragmentFix"
         android:label="fragment_login_acc_fix"
-        tools:layout="@layout/fragment_login_acc_fix"/>
+        tools:layout="@layout/fragment_login_acc_fix">
+        <action
+            android:id="@+id/action_loginAccFragmentFix_to_storiesFragment"
+            app:destination="@id/storiesFragment"
+            app:popUpTo="@id/loginAccFragmentFix"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/registerFragmentFix"
@@ -60,5 +66,29 @@
             app:destination="@id/loginAccFragmentFix"
             app:popUpTo="@id/authFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/storiesFragment"
+        android:name="com.cahyadesthian.chystoryapp.screen.StoriesFragment"
+        android:label="fragment_stories"
+        tools:layout="@layout/fragment_stories">
+        <argument
+            android:name="userToken"
+            android:defaultValue=""
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_storiesFragment_to_detailStoryFragment"
+            app:destination="@id/detailStoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailStoryFragment"
+        android:name="com.cahyadesthian.chystoryapp.screen.DetailStoryFragment"
+        android:label="fragment_detail_story"
+        tools:layout="@layout/fragment_detail_story">
+
+        <argument
+            android:name="story"
+            app:argType="com.cahyadesthian.chystoryapp.model.ItemListStory"/>
+
     </fragment>
 </navigation>

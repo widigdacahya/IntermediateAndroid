@@ -88,7 +88,7 @@ class LoginAccFragmentFix : Fragment() {
     }
 
     private fun goToStoryList(userToken: String) {
-
+        
     }
 
 

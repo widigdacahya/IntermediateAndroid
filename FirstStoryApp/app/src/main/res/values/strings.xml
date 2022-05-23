@@ -19,6 +19,7 @@
     <string name="registration">Registration</string>
     <string name="register_text">REGISTER 📝</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="bearerAuth" translatable="false">Bearer %1$s</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

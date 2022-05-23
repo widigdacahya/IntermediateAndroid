@@ -18,6 +18,7 @@
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/activity_tes.xml" value="0.36666666666666664" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/content_login.xml" value="0.26197916666666665" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_auth.xml" value="0.36666666666666664" />
+        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_detail_story.xml" value="0.25" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_first.xml" value="0.26197916666666665" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_first_page.xml" value="0.22" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_login_acc_fix.xml" value="0.22" />
@@ -25,8 +26,10 @@
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_second.xml" value="0.26197916666666665" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_second_page.xml" value="0.26721014492753625" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_splash.xml" value="0.2572463768115942" />
+        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_stories.xml" value="0.1762917933130699" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_third_page.xml" value="0.26358695652173914" />
         <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/fragment_view_pager_on_boarding.xml" value="0.2572463768115942" />
+        <entry key="..\:/kuliah/BANGKIT2022/Learn/Intermediate/FirstStoryApp/app/src/main/res/layout/item_story.xml" value="0.25" />
       </map>
     </option>
   </component>

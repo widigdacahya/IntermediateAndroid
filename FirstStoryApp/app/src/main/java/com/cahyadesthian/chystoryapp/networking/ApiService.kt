@@ -2,10 +2,9 @@ package com.cahyadesthian.chystoryapp.networking
 
 import com.cahyadesthian.chystoryapp.model.InfoResponse
 import com.cahyadesthian.chystoryapp.model.LoginResponse
+import com.cahyadesthian.chystoryapp.model.StoriesResponse
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -26,6 +25,12 @@ interface ApiService {
         @Field("email") email: String,
         @Field("password") password: String
     ): Call<LoginResponse>
+
+
+    @GET("stories")
+    fun getAllStory(
+        @Header("Authorization") token: String
+    ): Call<StoriesResponse>
 
 
 }

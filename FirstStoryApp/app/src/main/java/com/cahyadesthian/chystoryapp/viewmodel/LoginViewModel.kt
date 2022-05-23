@@ -1,5 +1,6 @@
 package com.cahyadesthian.chystoryapp.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,6 +33,7 @@ class LoginViewModel : ViewModel() {
                     call: Call<LoginResponse>,
                     response: Response<LoginResponse>
                 ) {
+
                     _isLoading.value = false
 
                     if(response.isSuccessful) {
@@ -47,7 +49,9 @@ class LoginViewModel : ViewModel() {
                 }
 
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                   _isLoading.value = false
+
+                    t.message?.let { Log.d("Failure login", it)}
+                    _isLoading.value = false
                     _error.value = Event(t.message.toString())
                 }
 
