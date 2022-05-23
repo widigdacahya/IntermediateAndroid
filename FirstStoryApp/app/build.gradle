@@ -37,9 +37,9 @@ android {
     }
     namespace 'com.cahyadesthian.chystoryapp'
 
-    sourceSets {
-        getByName("main").java.srcDirs("build/generated/source/navigation-args")
-    }
+//    sourceSets {
+//        getByName("main").java.srcDirs("build/generated/source/navigation-args")
+//    }
 }
 
 dependencies {

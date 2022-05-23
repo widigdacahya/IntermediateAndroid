@@ -80,6 +80,32 @@
             android:layout_height="wrap_content"/>
 
 
+        <ImageView
+            android:id="@+id/blackoverlay_add_story"
+            android:src="@drawable/black_gradient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:elevation="2dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <ProgressBar
+            android:id="@+id/pb_add_story"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:elevation="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/loading_add_story"
+            app:constraint_referenced_ids="pb_add_story,blackoverlay_add_story"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

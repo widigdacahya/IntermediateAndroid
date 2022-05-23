@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -80,6 +81,13 @@ class StoriesFragment : Fragment() {
             findNavController().navigate(toNewStory)
         }
 
+        //after uplaod
+        setFragmentResultListener(AddStoryFragment.ADD_RES) { _, bundle ->
+            if(bundle.getBoolean(AddStoryFragment.IS_SUCCESS)){
+                newStoryHere()
+            }
+        }
+
     }
 
     private fun loadingTHings(isLoading: Boolean) {
@@ -109,6 +117,11 @@ class StoriesFragment : Fragment() {
 
             })
         }
+    }
+
+    private fun newStoryHere() {
+        Toast.makeText(activity, "Your story there", Toast.LENGTH_SHORT).show()
+        storyViewModel.getAllStory()
     }
 
     override fun onDestroyView() {
