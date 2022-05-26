@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="register_text">REGISTER 📝</string>
+    <string name="bearerAuth" translatable="false">Bearer %1$s</string>
+</resources>

@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">ChyStoryApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ic_story_app">ic story app</string>
+    <string name="chy_story_app">Chy Story App 📱</string>
+    <string name="next">Next</string>
+    <string name="first_screen_illustration">first screen illustration</string>
+    <string name="sharing_your_piece_of_life">Sharing your piece of life 🍩</string>
+    <string name="catch_awesome_moment">Catch awesome moment 📷</string>
+    <string name="meet_other_s_life">Meet other\'s life 🙋🏻</string>
+    <string name="finish">FINISH</string>
+    <string name="image_welcome_to_app">image welcome to app</string>
+    <string name="welcome_in_chy_story_app">Welcome in Chy Story App 👋</string>
+    <string name="with_this_app_you_can_share_your_story_moment_feeling_and_any_photos_with_dicoding_api">With this app, you can share your story,moment, feeling, and any photos with Dicoding API 🎉🎉🎉</string>
+    <string name="sign_in">Sign In</string>
+    <string name="register">Register</string>
+    <string name="register_picture">Register Picture</string>
+    <string name="registration">Registration</string>
+    <string name="register_text">REGISTER 📝</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="bearerAuth" translatable="false">Bearer %1$s</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="login_picture">Login Picture</string>
+    <string name="login">LOGIN</string>
+    <string name="logintext">LOGIN 📲</string>
+    <string name="logout">logout</string>
+</resources>
