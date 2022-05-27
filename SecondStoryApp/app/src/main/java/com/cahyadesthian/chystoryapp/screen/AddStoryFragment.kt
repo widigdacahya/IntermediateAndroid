@@ -1,10 +1,12 @@
 package com.cahyadesthian.chystoryapp.screen
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
+import android.location.Location
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -26,6 +28,10 @@ import com.cahyadesthian.chystoryapp.databinding.FragmentAddStoryBinding
 import com.cahyadesthian.chystoryapp.screen.util.rotateBitmap
 import com.cahyadesthian.chystoryapp.screen.util.uriToFile
 import com.cahyadesthian.chystoryapp.viewmodel.AddStoryViewModel
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.tasks.CancellationTokenSource
 import java.io.File
 
 
@@ -37,6 +43,12 @@ class AddStoryFragment : Fragment() {
     private var userToken = ""
 
     private var fileImage: File? = null
+
+    private var location : Location? = null
+
+    private val cancelToken = CancellationTokenSource()
+
+    private lateinit var fusedLocationClient : FusedLocationProviderClient
 
     private val addStoryViewModel by viewModels<AddStoryViewModel>()
 
@@ -94,6 +106,9 @@ class AddStoryFragment : Fragment() {
             uploadStoryToServer()
         }
 
+        addStoryBinding?.btnLocate?.setOnClickListener {
+            getUserLocation()
+        }
 
 
 
@@ -118,6 +133,10 @@ class AddStoryFragment : Fragment() {
 
         setFragmentResultListener(CameraStoryFragment.CAMERA_RES) { _, bundle ->
             showImageCaptured(bundle)
+        }
+
+        activity?.let {
+            fusedLocationClient = LocationServices.getFusedLocationProviderClient(it)
         }
 
 
@@ -148,13 +167,11 @@ class AddStoryFragment : Fragment() {
     }
 
     private fun goListStoryPage() {
-        setFragmentResult(
-            ADD_RES, bundleOf(
-                IS_SUCCESS to true
-            )
-        )
 
-        findNavController().navigateUp()
+        val actionToListStory = AddStoryFragmentDirections.actionAddStoryFragmentToStoriesFragment(userToken,true)
+
+        findNavController().navigate(actionToListStory)
+
     }
 
     private fun uploadStoryToServer() {
@@ -182,10 +199,31 @@ class AddStoryFragment : Fragment() {
         addStoryBinding?.ivPreviewUserStory?.setImageBitmap(res)
     }
 
+    @SuppressLint("MissingPermission")
+    private fun getUserLocation() {
+
+        loadingThings(true)
+
+        fusedLocationClient.getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY,cancelToken.token)
+            .addOnSuccessListener {
+                location = it
+                addStoryBinding?.tvDataLatitude?.text = location?.latitude.toString()
+                addStoryBinding?.tvDataLongitude?.text = location?.longitude.toString()
+                loadingThings(false)
+            }
+            .addOnFailureListener {
+
+                Toast.makeText(activity,"ooops, sorry, cant find you",Toast.LENGTH_SHORT).show()
+
+                loadingThings(false)
+            }
+
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _addStoryBinding = null
+        cancelToken.cancel()
     }
 
     override fun onResume() {
@@ -195,9 +233,6 @@ class AddStoryFragment : Fragment() {
     }
 
     companion object {
-
-        const val ADD_RES = "add_result"
-        const val IS_SUCCESS = "is_success"
 
         private val REQUIRED_PERMISSIONS = if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
             arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)

@@ -33,7 +33,7 @@ class StoriesFragment : Fragment() {
         StoriesViewModel.Factory(getString(R.string.bearerAuth, userToken))
     }
 
-
+    private var newStory = false
 
 
     override fun onCreateView(
@@ -50,7 +50,11 @@ class StoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        userToken = fromBundle(arguments as Bundle).token
+        //userToken = fromBundle(arguments as Bundle).token
+
+        val args = StoriesFragmentArgs.fromBundle(arguments as Bundle)
+        userToken = args.token
+        newStory = args.newStory
 
         storyViewModel.isLoading.observe(viewLifecycleOwner) {
             loadingTHings(it)
@@ -78,12 +82,12 @@ class StoriesFragment : Fragment() {
             findNavController().navigate(toNewStory)
         }
 
-        //after uplaod
-        setFragmentResultListener(AddStoryFragment.ADD_RES) { _, bundle ->
-            if(bundle.getBoolean(AddStoryFragment.IS_SUCCESS)){
-                newStoryHere()
-            }
-        }
+//        //after uplaod
+//        setFragmentResultListener(AddStoryFragment.ADD_RES) { _, bundle ->
+//            if(bundle.getBoolean(AddStoryFragment.IS_SUCCESS)){
+//                newStoryHere()
+//            }
+//        }
 
     }
 

@@ -1,5 +1,6 @@
 package com.cahyadesthian.chystoryapp.viewmodel
 
+import android.location.Location
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -31,7 +32,7 @@ class AddStoryViewModel : ViewModel() {
     val isSuccess: LiveData<Event<Boolean>> = _isSucces
 
 
-    fun addStory(image: File, desc: String, auth: String) {
+    fun addStory(image: File, desc: String, auth: String, location: Location?= null) {
 
         _isLoading.value = true
 
@@ -45,7 +46,21 @@ class AddStoryViewModel : ViewModel() {
             imageReduced.asRequestBody("image/jpeg".toMediaType())
         )
 
-        Api.retorofitApiService().addStory(imagePart,descPart, auth)
+        val params = mutableMapOf(
+            "desc" to descPart
+        )
+
+        if(location != null) {
+
+            val lat = location.latitude.toString().toRequestBody("text/plain".toMediaType())
+            val lon = location.longitude.toString().toRequestBody("text/plain".toMediaType())
+
+            params["lat"] = lat
+            params["lon"] = lon
+
+        }
+
+        Api.retorofitApiService().addStory(imagePart,HashMap(params), auth)
             .enqueue(object : Callback<InfoResponse> {
                 override fun onResponse(
                     call: Call<InfoResponse>,

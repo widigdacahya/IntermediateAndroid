@@ -29,19 +29,42 @@ interface ApiService {
     ): Call<LoginResponse>
 
 
+//    @GET("stories")
+//    fun getAllStory(
+//        @Header("Authorization") token: String
+//    ): Call<StoriesResponse>
+//
+//
+//    @Multipart
+//    @POST("stories")
+//    fun addStory(
+//        @Part file: MultipartBody.Part,
+//        @Part("description") description: RequestBody,
+//        @Header("Authorization") auth: String
+//    ): Call<InfoResponse>
+
+
     @GET("stories")
     fun getAllStory(
-        @Header("Authorization") token: String
+        @Header("Authorization") token: String,
+        @Query("location") location: Int = 1
     ): Call<StoriesResponse>
-
 
     @Multipart
     @POST("stories")
     fun addStory(
         @Part file: MultipartBody.Part,
-        @Part("description") description: RequestBody,
+        @PartMap params: HashMap<String, RequestBody>,
         @Header("Authorization") auth: String
     ): Call<InfoResponse>
+
+    @GET("stories")
+    suspend fun getPagedAllStory(
+        @Header("Authorization") token: String,
+        @Query("page") page: Int = 1,
+        @Query("size") size: Int = 10
+    ) : StoriesResponse
+
 
 
     companion object {
