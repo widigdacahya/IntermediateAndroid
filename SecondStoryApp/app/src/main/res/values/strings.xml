@@ -31,4 +31,17 @@
     <string name="login">LOGIN</string>
     <string name="logintext">LOGIN 📲</string>
     <string name="logout">logout</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="add_location">Add location</string>
+    <string name="latitude">Latitude</string>
+    <string name="your_latitude_info">your latitude info</string>
+    <string name="longitude">Longitude</string>
+    <string name="your_longitude_info">Your longitude info</string>
+    <string name="overlay_loading">overlay loading</string>
+    <string name="change_camera">change camera</string>
+    <string name="capture_camera">capture camera</string>
+    <string name="view_of_story_image">view of story image</string>
+    <string name="add_new_story">add new story</string>
+    <string name="retry">Retry</string>
 </resources>

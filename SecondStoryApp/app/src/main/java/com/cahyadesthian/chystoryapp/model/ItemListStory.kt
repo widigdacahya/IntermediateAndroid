@@ -2,9 +2,13 @@ package com.cahyadesthian.chystoryapp.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity("story_item")
 @Parcelize
 data class ItemListStory(
+    @PrimaryKey
     val id: String,
     val name: String,
     val description: String,

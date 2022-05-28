@@ -2,12 +2,14 @@ package com.cahyadesthian.chystoryapp.screen.util
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cahyadesthian.chystoryapp.databinding.ItemStoryBinding
 import com.cahyadesthian.chystoryapp.model.ItemListStory
 
-class AdapterListStory(private val listStory: ArrayList<ItemListStory>) : RecyclerView.Adapter<AdapterListStory.StoryViewHolder>() {
+class AdapterListStory : PagingDataAdapter<ItemListStory, AdapterListStory.StoryViewHolder>(DiffStory()) {
 
     inner class StoryViewHolder(val binding: ItemStoryBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -17,22 +19,24 @@ class AdapterListStory(private val listStory: ArrayList<ItemListStory>) : Recycl
     }
 
     override fun onBindViewHolder(holder: StoryViewHolder, position: Int) {
-        val story = listStory[position]
+
+        getItem(position)?.let { itemStory ->
+
+            holder.binding.apply {
+                ivStoryPreview.glideLoad(itemStory.photoUrl)
+                tvUserUploadBy.text = itemStory.name
+            }
+
+            holder.itemView.setOnClickListener {
+                onItemClickCallback?.onItemClicked(itemStory, holder.binding)
+            }
 
 
-        holder.apply {
-            binding.apply {
-                ivStoryPreview.glideLoad(story.photoUrl)
-                tvUserUploadBy.text = story.name
-            }
-            itemView.setOnClickListener {
-                onItemClickCallback?.onItemClicked(story,binding)
-            }
         }
+
 
     }
 
-    override fun getItemCount(): Int = listStory.size
 
     interface OnItemClickCallback {
         fun onItemClicked(story: ItemListStory, storyBinding: ItemStoryBinding)
@@ -43,5 +47,20 @@ class AdapterListStory(private val listStory: ArrayList<ItemListStory>) : Recycl
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
+
+
+    class DiffStory : DiffUtil.ItemCallback<ItemListStory>(){
+        override fun areItemsTheSame(oldItem: ItemListStory, newItem: ItemListStory): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: ItemListStory, newItem: ItemListStory): Boolean {
+            return oldItem.name == newItem.name && oldItem.description == newItem.description && oldItem.photoUrl == newItem.photoUrl
+        }
+
+
+    }
+
+
 
 }

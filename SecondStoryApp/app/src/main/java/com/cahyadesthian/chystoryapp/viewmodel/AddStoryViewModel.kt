@@ -47,7 +47,7 @@ class AddStoryViewModel : ViewModel() {
         )
 
         val params = mutableMapOf(
-            "desc" to descPart
+            "description" to descPart
         )
 
         if(location != null) {

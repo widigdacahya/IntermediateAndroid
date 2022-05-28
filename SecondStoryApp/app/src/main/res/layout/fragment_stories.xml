@@ -24,10 +24,12 @@
         android:backgroundTint="@color/orange_500"
         android:src="@drawable/ic_baseline_camera_alt_24"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/add_new_story" />
 
     <ProgressBar
         android:id="@+id/pb_stories"
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

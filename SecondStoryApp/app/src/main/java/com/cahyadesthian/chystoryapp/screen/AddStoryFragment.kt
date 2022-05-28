@@ -11,6 +11,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -146,9 +147,11 @@ class AddStoryFragment : Fragment() {
         if(isLoading) {
             addStoryBinding?.loadingAddStory?.visibility = View.VISIBLE
             addStoryBinding?.btnUpload?.isEnabled = false
+            addStoryBinding?.btnLocate?.isEnabled = false
         } else {
             addStoryBinding?.loadingAddStory?.visibility = View.GONE
-            addStoryBinding?.loadingAddStory?.isEnabled = true
+            addStoryBinding?.btnUpload?.isEnabled = true
+            addStoryBinding?.btnLocate?.isEnabled = true
         }
     }
 
@@ -183,7 +186,7 @@ class AddStoryFragment : Fragment() {
             return
         }
 
-        addStoryViewModel.addStory(fileImage as File, desc, getString(R.string.bearerAuth,userToken) )
+        addStoryViewModel.addStory(fileImage as File, desc, getString(R.string.bearerAuth,userToken),location )
 
     }
 
@@ -232,13 +235,36 @@ class AddStoryFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = "Add Story"
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu) {
+
+        val menuHiding = menu.findItem(R.id.mapstory_menu)
+
+        if(menuHiding!=null) {
+            menuHiding.setVisible(false)
+            menuHiding.isEnabled = false
+        }
+
+
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+
     companion object {
 
-        private val REQUIRED_PERMISSIONS = if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
-            arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        } else {
-            arrayOf(Manifest.permission.CAMERA)
-        }
+        private val REQUIRED_PERMISSIONS = mutableListOf(
+            Manifest.permission.CAMERA,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ).apply {
+            if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+                add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+        }.toTypedArray()
+
     }
 
 }

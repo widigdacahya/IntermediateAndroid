@@ -2,10 +2,12 @@ package com.cahyadesthian.chystoryapp.screen
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.cahyadesthian.chystoryapp.R
 import com.cahyadesthian.chystoryapp.databinding.FragmentDetailStoryBinding
 import com.cahyadesthian.chystoryapp.model.ItemListStory
 import com.cahyadesthian.chystoryapp.screen.util.glideLoad
@@ -60,5 +62,23 @@ class DetailStoryFragment : Fragment() {
         }
 
     }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+
+        val menuHiding = menu.findItem(R.id.mapstory_menu)
+
+        if(menuHiding!=null) {
+            menuHiding.setVisible(false)
+            menuHiding.isEnabled = false
+        }
+
+
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
 
 }

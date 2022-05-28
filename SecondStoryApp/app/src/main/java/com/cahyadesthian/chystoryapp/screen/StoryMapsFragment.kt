@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -57,12 +58,12 @@ class StoryMapsFragment : Fragment() {
 
         googleMap.setOnInfoWindowClickListener {
 
-            var itemStory = it.tag as ItemListStory
+            val itemStory = it.tag as ItemListStory
 
             focusStory = itemStory
 
-            findNavController().navigate(StoriesFragmentDirections.actionStoriesFragmentToDetailStoryFragment(itemStory))
-
+            //findNavController().navigate(Stories.actionStoriesFragmentToDetailStoryFragment(itemStory))
+            findNavController().navigate(StoryMapsFragmentDirections.actionStoryMapsFragmentToDetailStoryFragment(itemStory))
         }
 
         googleMap.uiSettings.apply {
@@ -178,6 +179,24 @@ class StoryMapsFragment : Fragment() {
         if(isLoading) storyMapsBinding?.pbMapstory?.visibility = View.VISIBLE else storyMapsBinding?.pbMapstory?.visibility = View.GONE
 
     }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+
+        val menuHiding = menu.findItem(R.id.mapstory_menu)
+
+        if(menuHiding!=null) {
+            menuHiding.setVisible(false)
+            menuHiding.isEnabled = false
+        }
+
+
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -19,7 +19,8 @@
         android:layout_marginEnd="24dp"
         android:src="@drawable/ic_baseline_cameraswitch_24"
         android:layout_width="48dp"
-        android:layout_height="48dp"/>
+        android:layout_height="48dp"
+        android:contentDescription="@string/change_camera" />
 
 
     <ImageView
@@ -30,6 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="36dp"
         android:layout_width="52dp"
-        android:layout_height="52dp"/>
+        android:layout_height="52dp"
+        android:contentDescription="@string/capture_camera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

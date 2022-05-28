@@ -28,9 +28,15 @@ class MainActivity : AppCompatActivity() {
         SharedViewModel.Factory(SessionDataPreference.getDataStoreInstance(dataStore))
     }
 
+    private var userToken = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
+
+        sharedViewModel.seeToken().observe(this) {
+            userToken = it
+        }
 
         setContentView(mainBinding.root)
         //supportActionBar?.hide()
@@ -51,6 +57,10 @@ class MainActivity : AppCompatActivity() {
         when(item.itemId) {
             R.id.logout_menu -> {
                 logout(navContoller)
+            }
+            R.id.mapstory_menu -> {
+                val navToMapStory = StoriesFragmentDirections.actionStoriesFragmentToStoryMapsFragment(userToken)
+                navContoller.navigate(navToMapStory)
             }
         }
 
