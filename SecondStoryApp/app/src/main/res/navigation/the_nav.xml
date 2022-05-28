@@ -119,7 +119,9 @@
             app:destination="@id/cameraStoryFragment" />
         <action
             android:id="@+id/action_addStoryFragment_to_storiesFragment"
-            app:destination="@id/storiesFragment" />
+            app:destination="@id/storiesFragment"
+            app:popUpTo="@id/storiesFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/cameraStoryFragment"
