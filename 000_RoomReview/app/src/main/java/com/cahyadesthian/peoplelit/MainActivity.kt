@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    //biar back dari fragment work well
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.fragmentContainerView)
         return navController.navigateUp() ||  super.onSupportNavigateUp()
