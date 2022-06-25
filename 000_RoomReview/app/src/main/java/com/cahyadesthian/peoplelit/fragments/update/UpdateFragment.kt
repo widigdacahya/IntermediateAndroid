@@ -1,12 +1,11 @@
 package com.cahyadesthian.peoplelit.fragments.update
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -35,6 +34,8 @@ class UpdateFragment : Fragment() {
 
         mPeopleViewModel = ViewModelProvider(this).get(PeopleViewModel::class.java)
 
+        setHasOptionsMenu(true)
+
         edtFirstName = view.findViewById(R.id.edtfirstname_update)
         edtFirstName.setText(args.currentPeople.firstName)
 
@@ -62,6 +63,27 @@ class UpdateFragment : Fragment() {
         }
 
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.delete_menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.menu_delete) {
+            val alertBuilder = AlertDialog.Builder(requireContext())
+            alertBuilder.setPositiveButton("Yes") { _, _ ->
+                mPeopleViewModel.deletePeople(args.currentPeople)
+                Toast.makeText(requireContext(),"People deleted", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_updateFragment_to_listFragment)
+            }
+            alertBuilder.setNegativeButton("No") { _, _ ->
+            }
+            alertBuilder.setTitle("Delete ${args.currentPeople.firstName}?")
+            alertBuilder.setMessage("Sure want to delete ${args.currentPeople.firstName}?")
+            alertBuilder.create().show()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun inputCheck(firstName: String, lastName: String, age: Editable): Boolean {

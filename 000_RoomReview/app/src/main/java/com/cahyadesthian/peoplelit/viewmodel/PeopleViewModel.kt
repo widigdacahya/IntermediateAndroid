@@ -36,4 +36,16 @@ class PeopleViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
+    fun deletePeople(people: People) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deletePeople(people)
+        }
+    }
+
+    fun deleteAllPeoples() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteAllPeoples()
+        }
+    }
+
 }
