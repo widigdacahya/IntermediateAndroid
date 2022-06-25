@@ -30,4 +30,10 @@ class PeopleViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
+    fun updatePeople(people: People) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updatePeople(people)
+        }
+    }
+
 }
