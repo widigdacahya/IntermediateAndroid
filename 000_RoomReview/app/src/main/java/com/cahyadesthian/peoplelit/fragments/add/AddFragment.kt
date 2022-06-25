@@ -13,9 +13,8 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.cahyadesthian.peoplelit.R
-import com.cahyadesthian.peoplelit.data.People
-import com.cahyadesthian.peoplelit.data.PeopleViewModel
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.cahyadesthian.peoplelit.model.People
+import com.cahyadesthian.peoplelit.viewmodel.PeopleViewModel
 
 
 class AddFragment : Fragment() {

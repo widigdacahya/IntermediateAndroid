@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.cahyadesthian.peoplelit.R
-import com.cahyadesthian.peoplelit.data.People
-import org.w3c.dom.Text
+import com.cahyadesthian.peoplelit.model.People
 
 class ListAdapter: RecyclerView.Adapter<ListAdapter.TheViewHolder>() {
 
@@ -19,6 +20,7 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.TheViewHolder>() {
         val firtNameTv = itemView.findViewById<TextView>(R.id.tv_firstname)
         val lastNameTv = itemView.findViewById<TextView>(R.id.tv_lastname)
         val ageTv = itemView.findViewById<TextView>(R.id.tv_age)
+        val rowItem = itemView.findViewById<ConstraintLayout>(R.id.row_peuple_item)
     }
 
 
@@ -33,6 +35,10 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.TheViewHolder>() {
         holder.firtNameTv.text = currentItem.firstName.toString()
         holder.lastNameTv.text = currentItem.lastName
         holder.ageTv.text = currentItem.age.toString()
+        holder.rowItem.setOnClickListener {
+            val actionGoDetail = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
+            holder.itemView.findNavController().navigate(actionGoDetail)
+        }
     }
 
     override fun getItemCount(): Int = peopleList.size

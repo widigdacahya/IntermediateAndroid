@@ -9,10 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.cahyadesthian.peoplelit.R
-import com.cahyadesthian.peoplelit.data.PeopleViewModel
+import com.cahyadesthian.peoplelit.viewmodel.PeopleViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
