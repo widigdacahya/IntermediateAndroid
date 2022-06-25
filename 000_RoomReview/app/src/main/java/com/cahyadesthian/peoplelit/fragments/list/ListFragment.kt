@@ -1,10 +1,10 @@
 package com.cahyadesthian.peoplelit.fragments.list
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -23,6 +23,8 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setHasOptionsMenu(true)
 
         val peopleListAdapter = ListAdapter()
         val recyclerView : RecyclerView = view.findViewById(R.id.rc_list_people)
@@ -46,6 +48,28 @@ class ListFragment : Fragment() {
 
 
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.delete_menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if(item.itemId == R.id.menu_delete) {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setPositiveButton("Yes") { _,_ ->
+                mPeopleViewModel.deleteAllPeoples()
+                Toast.makeText(requireContext(),"Everone Deleted", Toast.LENGTH_SHORT).show()
+            }
+            builder.setNegativeButton("No") {_,_ ->}
+            builder.setTitle("Delete all People?")
+            builder.setMessage("All deleted people can come back")
+            builder.create().show()
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
