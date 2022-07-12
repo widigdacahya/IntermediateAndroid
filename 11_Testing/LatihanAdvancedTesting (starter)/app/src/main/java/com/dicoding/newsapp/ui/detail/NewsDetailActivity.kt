@@ -27,6 +27,7 @@ class NewsDetailActivity : AppCompatActivity() {
         binding = ActivityNewsDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         newsDetail = intent.getParcelableExtra<NewsEntity>(NEWS_DATA) as NewsEntity
 
         supportActionBar?.title = newsDetail.title
