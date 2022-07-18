@@ -13,9 +13,7 @@ import com.dicoding.newsapp.data.local.entity.NewsEntity
 import com.dicoding.newsapp.databinding.ItemNewsBinding
 import com.dicoding.newsapp.ui.list.NewsAdapter.MyViewHolder
 
-class NewsAdapter(private val onItemClick: (NewsEntity) -> Unit) : ListAdapter<NewsEntity, MyViewHolder>(
-    DIFF_CALLBACK
-) {
+class NewsAdapter(private val onItemClick: (NewsEntity) -> Unit) : ListAdapter<NewsEntity, MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = ItemNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -27,9 +25,7 @@ class NewsAdapter(private val onItemClick: (NewsEntity) -> Unit) : ListAdapter<N
         holder.bind(news)
     }
 
-    class MyViewHolder(private val binding: ItemNewsBinding, val onItemClick: (NewsEntity) -> Unit) : RecyclerView.ViewHolder(
-        binding.root
-    ) {
+    class MyViewHolder(private val binding: ItemNewsBinding, val onItemClick: (NewsEntity) -> Unit) : RecyclerView.ViewHolder(binding.root) {
         fun bind(news: NewsEntity) {
             binding.tvItemTitle.text = news.title
             binding.tvItemPublishedDate.text = news.publishedAt
