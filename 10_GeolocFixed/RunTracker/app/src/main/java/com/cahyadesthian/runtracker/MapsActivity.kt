@@ -1,7 +1,11 @@
 package com.cahyadesthian.runtracker
 
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -41,8 +45,52 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+//        val sydney = LatLng(-34.0, 151.0)
+//        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        getMyLatestLocation()
     }
+
+
+    fun getMyLatestLocation() {
+
+        if(checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) && checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)) {
+
+        } else {
+            requestPermissionLauncher.launch(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+            )
+        }
+
+
+    }
+
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+
+        when {
+            permissions[Manifest.permission.ACCESS_FINE_LOCATION]?: false -> {
+                //precise location access granted
+                getMyLatestLocation()
+            }
+            permissions[Manifest.permission.ACCESS_COARSE_LOCATION]?: false -> {
+                //only approximate location access granted
+                getMyLatestLocation()
+            }
+            else -> {
+
+            }
+        }
+
+    }
+
+    private fun checkPermission(permission: String) : Boolean {
+        return ContextCompat.checkSelfPermission(this,permission) == PackageManager.PERMISSION_GRANTED
+    }
+
+
 }
