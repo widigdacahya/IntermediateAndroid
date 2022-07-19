@@ -2,12 +2,14 @@ package com.cahyadesthian.runtracker
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.IntentSender
 import android.content.pm.PackageManager
-import android.graphics.Camera
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 
@@ -18,8 +20,12 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.cahyadesthian.runtracker.databinding.ActivityMapsBinding
+import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.LocationSettingsRequest
+import java.util.concurrent.TimeUnit
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -27,6 +33,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMapsBinding
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+
+    private lateinit var locationRequest: LocationRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +67,50 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 //        val sydney = LatLng(-34.0, 151.0)
 //        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-        getMyLatestLocation()
+
+
+        // get current location
+        //getMyLatestLocation()
+
+        //for tracker
+        createLocationRequest()
+    }
+
+
+    private fun createLocationRequest() {
+        locationRequest = LocationRequest.create().apply {
+            interval = TimeUnit.SECONDS.toMillis(1)
+            maxWaitTime = TimeUnit.SECONDS.toMillis(1)
+            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        }
+
+        val builder = LocationSettingsRequest.Builder().addLocationRequest(locationRequest)
+        val client = LocationServices.getSettingsClient(this)
+        client.checkLocationSettings(builder.build())
+            .addOnSuccessListener {
+                getMyLatestLocation()
+            }
+
+            .addOnFailureListener { exception ->
+                if(exception is ResolvableApiException) {
+                    try {
+                        resolutionLauncher.launch(IntentSenderRequest.Builder(exception.resolution).build())
+                    } catch (sendEx: IntentSender.SendIntentException) {
+                        Toast.makeText(this@MapsActivity, sendEx.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
+    }
+
+    //for tracker
+    private val resolutionLauncher = registerForActivityResult(
+        ActivityResultContracts.StartIntentSenderForResult()
+    ) { result ->
+        when (result.resultCode) {
+            RESULT_OK -> Log.i(TAG, "onActivityResult: All location settings are satisfied ")
+            RESULT_CANCELED -> Toast.makeText(this@MapsActivity, "You need to activate GPS for this application", Toast.LENGTH_SHORT).show()
+        }
     }
 
 
@@ -130,5 +181,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         return ContextCompat.checkSelfPermission(this,permission) == PackageManager.PERMISSION_GRANTED
     }
 
+    companion object {
+        private const val TAG = "MapsActivity"
+    }
 
 }
