@@ -7,12 +7,12 @@ import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -70,7 +70,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
         // get current location
-        //getMyLatestLocation()
+        getMyLatestLocation()
 
         //for tracker
         createLocationRequest()
@@ -79,8 +79,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding.btnStart.setOnClickListener {
             if(!isTracking) {
                 updateTrackingStatus(true)
+                startLocationUpdates()  //request update when btn pressed
             } else {
                 updateTrackingStatus(false)
+                stopLocationUpdates()
             }
         }
 
@@ -96,6 +98,34 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+
+    //request update when btn pressed
+    @SuppressLint("MissingPermission")
+    private fun startLocationUpdates() {
+        try {
+            fusedLocationClient.requestLocationUpdates(
+                locationRequest, locationCallback, Looper.getMainLooper()
+            )
+        } catch (exception: SecurityException) {
+            Log.e(TAG, "Error : " + exception.message )
+        }
+    }
+
+    private fun stopLocationUpdates() {
+        fusedLocationClient.removeLocationUpdates(locationCallback)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(isTracking) {
+            startLocationUpdates()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        stopLocationUpdates()
+    }
 
     private fun createLocationRequest() {
         locationRequest = LocationRequest.create().apply {
@@ -201,7 +231,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 getMyLatestLocation()
             }
             else -> {
-
+                //no location access granted
             }
         }
 
