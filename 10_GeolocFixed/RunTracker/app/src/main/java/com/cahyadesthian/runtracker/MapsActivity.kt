@@ -21,10 +21,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.cahyadesthian.runtracker.databinding.ActivityMapsBinding
 import com.google.android.gms.common.api.ResolvableApiException
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.location.LocationSettingsRequest
+import com.google.android.gms.location.*
 import java.util.concurrent.TimeUnit
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -35,6 +32,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     private lateinit var locationRequest: LocationRequest
+    private lateinit var locationCallback: LocationCallback
+
+    private var isTracking = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,6 +74,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         //for tracker
         createLocationRequest()
+        createLocationCallback()
+
+        binding.btnStart.setOnClickListener {
+            if(!isTracking) {
+                updateTrackingStatus(true)
+            } else {
+                updateTrackingStatus(false)
+            }
+        }
+
+    }
+
+    // toggle button on  between start and stop running
+    private fun updateTrackingStatus(newStatus: Boolean) {
+        isTracking = newStatus
+        if(isTracking) {
+            binding.btnStart.text = getString(R.string.stop_running)
+        } else {
+            binding.btnStart.text = getString(R.string.start_running)
+        }
     }
 
 
@@ -101,6 +121,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
             }
 
+    }
+
+    private fun createLocationCallback() {
+        locationCallback = object : LocationCallback() {
+            override fun onLocationResult(p0: LocationResult) {
+                for(location in p0.locations) {
+                    Log.d(TAG, "onLocationResult: " + location.latitude + ", " + location.longitude)
+                }
+            }
+        }
     }
 
     //for tracker
