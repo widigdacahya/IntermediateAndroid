@@ -23,6 +23,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.cahyadesthian.runtracker.databinding.ActivityMapsBinding
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.PolylineOptions
 import java.util.concurrent.TimeUnit
 
@@ -39,6 +40,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private var isTracking = false
 
     private var allLatLang = ArrayList<LatLng>()
+
+    private var boundsBuilder = LatLngBounds.Builder()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -173,6 +176,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             .width(10f)
                             .addAll(allLatLang)
                     )
+
+                    //set boundaries when lat lang move
+                    boundsBuilder.include(lastLatLang)
+                    val bounds: LatLngBounds = boundsBuilder.build()
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 64))
 
                 }
             }
