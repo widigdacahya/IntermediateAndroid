@@ -85,6 +85,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding.btnStart.setOnClickListener {
             if(!isTracking) {
+                clearMaps() // when drawing polyline, so previous polyline clear when start button pressed
                 updateTrackingStatus(true)
                 startLocationUpdates()  //request update when btn pressed
             } else {
@@ -105,6 +106,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+
+    //clear polyline when btn start press
+    private fun clearMaps() {
+        mMap.clear()
+        allLatLang.clear()
+        boundsBuilder = LatLngBounds.Builder()
+    }
 
     //request update when btn pressed
     @SuppressLint("MissingPermission")
@@ -219,12 +227,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
         } else {
-            requestPermissionLauncher.launch(
-                arrayOf(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                )
-            )
+//            requestPermissionLauncher.launch(
+//                arrayOf(
+//                    Manifest.permission.ACCESS_FINE_LOCATION,
+//                    Manifest.permission.ACCESS_COARSE_LOCATION
+//                ).toString()
+//            )
+
+            //if use code that less code
+            requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         }
 
 
@@ -241,25 +252,38 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(startLocation, 17f))
     }
 
-    private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions()
-    ) { permissions ->
+//    private val requestPermissionLauncher = registerForActivityResult(
+//        ActivityResultContracts.RequestMultiplePermissions()
+//    ) { permissions ->
+//
+//        when {
+//            permissions[Manifest.permission.ACCESS_FINE_LOCATION]?: false -> {
+//                //precise location access granted
+//                getMyLatestLocation()
+//            }
+//            permissions[Manifest.permission.ACCESS_COARSE_LOCATION]?: false -> {
+//                //only approximate location access granted
+//                getMyLatestLocation()
+//            }
+//            else -> {
+//                //no location access granted
+//            }
+//        }
+//
+//    }
 
-        when {
-            permissions[Manifest.permission.ACCESS_FINE_LOCATION]?: false -> {
-                //precise location access granted
+    //other requestPermissionLauncher that less code, but need change on getMyLatesLocation that in this case still array of
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isPermissionGranted: Boolean ->
+
+            if(isPermissionGranted) {
                 getMyLatestLocation()
             }
-            permissions[Manifest.permission.ACCESS_COARSE_LOCATION]?: false -> {
-                //only approximate location access granted
-                getMyLatestLocation()
-            }
-            else -> {
-                //no location access granted
-            }
+
         }
 
-    }
 
     private fun checkPermission(permission: String) : Boolean {
         return ContextCompat.checkSelfPermission(this,permission) == PackageManager.PERMISSION_GRANTED
