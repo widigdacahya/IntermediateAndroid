@@ -44,4 +44,75 @@
         android:layout_width="36dp"
         android:layout_height="36dp"/>
 
+    <TextView
+        android:id="@+id/tv_title"
+        app:layout_constraintTop_toBottomOf="@id/flforvid"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Wonderland Indonesia 2 : The Sacred Nusantara"
+        android:textSize="18sp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/photoauthor"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_constraintStart_toStartOf="@id/tv_title"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/alfyrev"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+
+    <LinearLayout
+        android:id="@+id/linlayidentity"
+        app:layout_constraintTop_toTopOf="@id/photoauthor"
+        app:layout_constraintStart_toEndOf="@id/photoauthor"
+        android:orientation="vertical"
+        android:layout_marginStart="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_name_alfy"
+            android:text="Alffy Rev"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/timestamp"
+            android:text="published at 17 August 2022"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/description"
+        app:layout_constraintTop_toBottomOf="@id/photoauthor"
+        app:layout_constraintStart_toStartOf="@id/photoauthor"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:id="@+id/line"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="#D5D5D5"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
