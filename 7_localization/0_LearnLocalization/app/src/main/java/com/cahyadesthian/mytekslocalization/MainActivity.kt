@@ -1,8 +1,10 @@
 package com.cahyadesthian.mytekslocalization
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.MediaController
@@ -24,8 +26,16 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         setupView()
+        lanSetup()
     }
 
+
+
+    private fun lanSetup() {
+        mainActivityBinding.settingIcon.setOnClickListener {
+            startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+        }
+    }
 
 
     private fun setupView() {
