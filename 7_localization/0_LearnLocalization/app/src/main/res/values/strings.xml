@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">MyTeksLocalization</string>
     <string name="description">Wonderland Indonesia II - “The Sacred Nusantara” is a special masterpiece initiated by Alffy Rev, together with Dewatlantis Studio and REV Production, taking the inspiration from a piece of history of Nusantara (the Indonesian archipelago) to depict its diversity and wonders. This is our dedication, as children of our nation, in the hope of reviving the love for our Motherland, Indonesia, on the 77th anniversary of Indonesia\'s independence.</string>
+    <string name="settingButtonDescription">Change Language Setting</string>
+    <string name="contentMainDescription">Main Content Preview</string>
+    <string name="contentAuthorPhoto">Photo of Author %1$s</string>
+    <string name="authorName">Author Name is %1$s</string>
 </resources>

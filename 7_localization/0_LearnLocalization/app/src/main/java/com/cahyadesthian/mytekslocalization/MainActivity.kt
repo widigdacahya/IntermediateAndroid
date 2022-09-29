@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         setupView()
         lanSetup()
+        setupAccessibility()
     }
 
 
@@ -56,8 +57,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun setuplang() {
-
+    private fun setupAccessibility() {
+        mainActivityBinding.apply {
+            settingIcon.contentDescription = getString(R.string.settingButtonDescription)
+            gifview.contentDescription = getString(R.string.contentMainDescription)
+            photoauthor.contentDescription = getString(R.string.contentAuthorPhoto,"Alffy Rev")
+            tvNameAlfy.contentDescription = getString(R.string.authorName,"Alffy Rev")
+        }
     }
 
 
