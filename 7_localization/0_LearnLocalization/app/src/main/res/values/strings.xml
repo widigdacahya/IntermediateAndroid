@@ -5,4 +5,5 @@
     <string name="contentMainDescription">Main Content Preview</string>
     <string name="contentAuthorPhoto">Photo of Author %1$s</string>
     <string name="authorName">Author Name is %1$s</string>
+    <string name="timepublished">published at 17 August 2022</string>
 </resources>

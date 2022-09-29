@@ -75,7 +75,7 @@
 
         <TextView
             android:id="@+id/timestamp"
-            android:text="published at 17 August 2022"
+            android:text="@string/timepublished"
             android:textSize="12sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
