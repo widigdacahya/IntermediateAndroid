@@ -19,11 +19,15 @@ class MainActivity : AppCompatActivity() {
         mainActivityBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainActivityBinding.root)
 
+        /*
         mainActivityBinding.videoview.setVideoPath("android.resource://"+ packageName +"/"+R.raw.wonderland)
         val mediaController =  MediaController(this)
         mediaController.setAnchorView(mainActivityBinding.videoview)
         mainActivityBinding.videoview.setMediaController(mediaController)
+        */
+
         supportActionBar?.hide()
+
 
         setupView()
         lanSetup()
